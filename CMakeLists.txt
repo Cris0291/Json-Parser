@@ -6,4 +6,6 @@ set(CMAKE_CXX_STANDARD 23)
 add_library(Json_Project SHARED
         Tokenizer/Tokenizer.cpp
         Tokenizer/Tokenizer.h
+        Tokenizer/TokenState.h
+        Tokenizer/TokenNode.h
 )
