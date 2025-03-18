@@ -1,23 +1,35 @@
 #include "Tokenizer.h"
+#include "TokenState.h"
 
 #include <ranges>
+using namespace State;
 
-template<typename IteratorType>
-Tokenizer<IteratorType>::Tokenizer(std::string &&json) noexcept : json_value{std::move(json)}, current_position{std::ranges::cbegin(json)}, position{0} {
+Tokenizer::Tokenizer(std::string &&json) noexcept : json_value{std::move(json)} {
+
+}
+
+
+
+void Tokenizer::Parse() {
+    auto currChar = json_value.begin();
+
+    TokenState stateNow = TokenState::NewToken;
+    TokenState stateNext = TokenState::NewToken;
+
+    while (currChar != json_value.end()) {
+        switch (stateNow) {
+            case TokenState::NewToken: {
+
+            }
+        }
+    }
 }
 
 
 
-template<typename IteratorType>
-void Tokenizer<IteratorType>::parse() {
-    if (json_value[0] != '{') throw std::invalid_argument{"Json value should start with { and end with }"};
 
 
-
-}
-
-template<typename IteratorType>
-char Tokenizer<IteratorType>::get_next_token_without_spaces() {
+char Tokenizer::get_next_token_without_spaces() {
     char result {};
     while (true) {
         if (*current_position == " " || *current_position == "\n") {
@@ -32,8 +44,8 @@ char Tokenizer<IteratorType>::get_next_token_without_spaces() {
 }
 
 
-template<typename IteratorType>
-void Tokenizer<IteratorType>::check_token() {
+
+void Tokenizer::check_token() {
     char next_token = get_next_token_without_spaces();
     switch (next_token) {
         case next_token == '{':
