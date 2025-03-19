@@ -2,7 +2,10 @@
 #include "TokenState.h"
 
 #include <ranges>
+
+#include "TokenNode.h"
 using namespace State;
+using namespace  Node;
 
 Tokenizer::Tokenizer(std::string &&json) noexcept : json_value{std::move(json)} {
 
@@ -16,10 +19,12 @@ void Tokenizer::Parse() {
     TokenState stateNow = TokenState::NewToken;
     TokenState stateNext = TokenState::NewToken;
 
+    TokenNode tokenNode{};
+
     while (currChar != json_value.end()) {
         switch (stateNow) {
             case TokenState::NewToken: {
-
+                tokenNode = TokenNode{Type::Unknown, Value{0}};
             }
         }
     }

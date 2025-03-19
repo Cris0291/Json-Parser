@@ -10,7 +10,7 @@
 
 
 namespace Node {
-    struct TokenNode;
+    class TokenNode;
     using TokenObject = std::map<std::string, std::shared_ptr<TokenNode>>;
     using TokenList = std::vector<std::shared_ptr<TokenNode>>;
     using null = std:: nullptr_t;
@@ -21,17 +21,25 @@ namespace Node {
         String_Literal,
         Numeric_Literal,
         Boolean,
+        Null,
+        Unknown
+    };
+    union Value {
+        TokenObject *object;
+        TokenList *list;
+        std::string *s_literal;
+        float n_literal;
+        bool bValue;
+        null nValue;
     };
 
-    struct TokenNode {
-        union Value {
-            TokenObject *object;
-            TokenList *list;
-            std::string *s_literal;
-            float n_literal;
-            bool bValue;
-            null nValue;
-        } value;
+    class TokenNode {
+        Value value;
         Type type;
+    public:
+        TokenNode() = default;
+        TokenNode(Type t, Value v);
+        Type getType() const;
+        Value getValue() const;
     };
 }
