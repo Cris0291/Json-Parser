@@ -23,6 +23,7 @@ void Tokenizer::Parse() {
     TokenNode tokenNode{};
 
     int curlybraceBalance{0};
+    std::string tokenValue {""};
 
     while (currChar != json_value.end()) {
         switch (stateNow) {
@@ -34,7 +35,7 @@ void Tokenizer::Parse() {
                     stateNext = TokenState::NewToken;
                 }
                 else if (currChar[0] == '"') {
-                    stateNext = TokenState::Key;
+                    stateNext = TokenState::StringLiteral;
                 }
                 else if (currChar[0] == '{') {
                     ++curlybraceBalance;
@@ -44,50 +45,45 @@ void Tokenizer::Parse() {
                     --curlybraceBalance;
                     stateNext = TokenState::Close_Parenthesis;
                 }
+                else if (currChar[0] == '[') {
+                    stateNext = TokenState::Open_Array;
+                }
+                else if (currChar[0] == ']') {
+                    stateNext = TokenState::Close_Array;
+                }
+                else if (currChar[0] == ':') {
+                    stateNext = TokenState::Colon;
+                }
+                else if (currChar[0] == ',') {
+                    stateNext = TokenState::Comma;
+                }
+                else if (lut::NumericDigits.at(currChar[0])) {
+                    stateNext = TokenState::NumericLiteral;
+                }
+                else if (currChar[0] == 'b') {
+                    stateNext = TokenState::Boolean;
+                }
+                else if (currChar[0] == 'f') {
+                    stateNext = TokenState::Boolean;
+                }
+            }
+            case TokenState::StringLiteral: {
+                if (currChar[0] != '"') {
+                    tokenValue += currChar[0];
+                    ++currChar;
+                }
+                else {
+                    ++currChar[0];
+                    stateNext = TokenState::CompleteToken;
+                }
+            }
+            case TokenState::Open_Array: {
+                tokenValue += currChar[0];
+                ++currChar;
+                stateNext = TokenState::NewToken;
             }
         }
         stateNow = stateNext;
     }
 }
 
-
-
-
-
-char Tokenizer::get_next_token_without_spaces() {
-    char result {};
-    while (true) {
-        if (*current_position == " " || *current_position == "\n") {
-            current_position++;
-            continue;
-        }
-        result = *current_position;
-        break;
-    }
-
-    return  result;
-}
-
-
-
-void Tokenizer::check_token() {
-    char next_token = get_next_token_without_spaces();
-    switch (next_token) {
-        case next_token == '{':
-            break;
-        case next_token == '}':
-            break;
-        case next_token == '[':
-            break;
-        case next_token == ']':
-            break;
-        case next_token == '"':
-            break;
-        case next_token == '-' || (next_token >= '0' && next_token <= '9'):
-            break;
-        case next_token == 't':
-            break;
-        case next_token == 'f':
-            break;
-    }
-}
