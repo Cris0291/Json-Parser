@@ -7,7 +7,7 @@
 namespace State {
     enum class TokenState {
         NewToken,
-        Symbol,
+        Key,
         StringLiteral,
         NumericLiteral,
         Open_Parenthesis,
@@ -18,6 +18,21 @@ namespace State {
         Null,
         Comma,
         Colon,
-
+        CompleteToken,
+        Unknown
+    };
+    enum class JsonState {
+        Init,
+        Key,
+        Colon,
+        Value,
+        Comma,
+        Close,
+        Unknown
+    };
+    struct Token {
+        TokenState type;
+        JsonState jsonType;
+        std::string value;
     };
 }

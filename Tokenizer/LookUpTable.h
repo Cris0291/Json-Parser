@@ -20,6 +20,7 @@ namespace lut {
     constexpr auto WhitespaceDigits = MakeTable(" \t\n\r\v\f");
     constexpr auto NumericDigits = MakeTable("0123456789");
     constexpr auto RealNumericDigits = MakeTable(".0123456789");
-    constexpr auto KeyDigits = MakeTable("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789");
+    constexpr auto KeyDigits = MakeTable("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789-");
+    constexpr auto KeyValidStart = MakeTable("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_");
     constexpr auto StringDigits = MakeTable("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
 }
