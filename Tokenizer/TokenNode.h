@@ -22,7 +22,6 @@ namespace Node {
         Numeric_Literal,
         Boolean,
         Null,
-        Unknown
     };
     union Value {
         TokenObject *object;
