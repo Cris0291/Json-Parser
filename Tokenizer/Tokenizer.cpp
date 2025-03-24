@@ -19,6 +19,7 @@ void Tokenizer::Parse() {
     std::vector<Token> vectorOutputTokens {};
     bool initMarker {true};
     bool keyStartMarker {true};
+    bool numericPointFound {true};
 
     TokenState stateNow = TokenState::NewToken;
     TokenState stateNext = TokenState::NewToken;
@@ -43,6 +44,7 @@ void Tokenizer::Parse() {
                 else if (currChar[0] == '"') {
                     if (jsonStateNow == JsonState::Init) {
                         stateNext = TokenState::Key;
+                        ++currChar;
                     }
                     else {
                         stateNext = TokenState::StringLiteral;
@@ -71,24 +73,37 @@ void Tokenizer::Parse() {
                 else if (lut::NumericDigits.at(currChar[0])) {
                     stateNext = TokenState::NumericLiteral;
                 }
-                else if (currChar[0] == 'b') {
-                    stateNext = TokenState::Boolean;
+                else if (currChar[0] == 't') {
+                    stateNext = TokenState::TrueBoolean;
                 }
                 else if (currChar[0] == 'f') {
-                    stateNext = TokenState::Boolean;
+                    stateNext = TokenState::FalseBoolean;
+                }
+                else {
+                    throw std::invalid_argument("Json was ill-formed");
                 }
                 break;
             }
             case TokenState::Key: {
+                if (initMarker) throw std::invalid_argument("Json should start with a {");
                 if (keyStartMarker) {
-                    if (!lut::KeyValidStart.at(currChar[0]))throw std::invalid_argument("Json key should start with letters or an underscore");
+                    if (!lut::KeyValidStart.at(currChar[0]))throw std::invalid_argument("Json key could not be parser into a  valid c++ variable. C++ variables should start with letters or an underscore");
                     keyStartMarker = false;
                 }
+
                 if (currChar[0] == '"') {
                     token = {TokenState::Key, JsonState::Key, tokenValue};
                     jsonStateNow = JsonState::Key;
                     stateNext = TokenState::CompleteToken;
+                    keyStartMarker = true;
+                    ++currChar;
+                    break;
                 }
+
+                if (!lut::KeyDigits.at(currChar[0])) {
+                    throw std::invalid_argument("Either key contains invalid characters and could not be parser into a valid c++ variable or was lacking a final \"");
+                }
+
                 tokenValue += currChar[0];
                 ++currChar;
                 break;
@@ -122,6 +137,64 @@ void Tokenizer::Parse() {
                     token = {TokenState::Open_Parenthesis, JsonState::Value, tokenValue};
                     jsonStateNow = JsonState::Value;
                 }
+                break;
+            }
+            case TokenState::NumericLiteral: {
+                if (jsonStateNow != JsonState::Colon) throw std::invalid_argument("Json was ill-formed. Either a key was missing or was not constructed correctly");
+                if (lut::RealNumericDigits.at(currChar[0])) {
+                    if (currChar[0] == '.') {
+                        if (numericPointFound) {
+                            throw std::invalid_argument("Bad numeric construction");
+                        }
+                        numericPointFound = true;
+                    }
+                    tokenValue += currChar[0];
+                    ++currChar;
+                }
+                else {
+
+                }
+            }
+            case TokenState::TrueBoolean: {
+                if (jsonStateNow != JsonState::Colon) throw std::invalid_argument("Json was ill-formed. Either a key was missing or was not constructed correctly");
+                if (currChar[0] == ',') {
+                    if (tokenValue.size() != 4) throw std::invalid_argument("true boolean was not formed correctly");
+
+                    token = {TokenState::TrueBoolean, JsonState::Value, tokenValue};
+                    jsonStateNow = JsonState::Value;
+                    stateNext = TokenState::CompleteToken;
+                    break;
+                }
+                if (!lut::TrueBooleanDigits.at(currChar[0])) throw std::invalid_argument("true boolean was not formed correctly");
+
+                tokenValue += currChar[0];
+                ++currChar;
+                break;
+            }
+            case TokenState::FalseBoolean: {
+                if (jsonStateNow != JsonState::Colon) throw std::invalid_argument("Json was ill-formed. Either a key was missing or was not constructed correctly");
+                if (currChar[0] == ',') {
+                    if (tokenValue.size() != 4) throw std::invalid_argument("false boolean was not formed correctly");
+
+                    token = {TokenState::FalseBoolean, JsonState::Value, tokenValue};
+                    jsonStateNow = JsonState::Value;
+                    stateNext = TokenState::CompleteToken;
+                    break;
+                }
+                if (!lut::FalseBooleanDigits.at(currChar[0])) throw std::invalid_argument("false boolean was not formed correctly");
+
+                tokenValue += currChar[0];
+                ++currChar;
+                break;
+            }
+            case TokenState::Colon: {
+                if (jsonStateNow != JsonState::Key) throw std::invalid_argument("Json was ill-formed. Either a key was missing or was not constructed correctly");
+
+                tokenValue += currChar[0];
+                token = {TokenState::Colon, JsonState::Colon, tokenValue};
+                ++currChar;
+                jsonStateNow = JsonState::Colon;
+                stateNext = TokenState::CompleteToken;
                 break;
             }
             case TokenState::CompleteToken: {
