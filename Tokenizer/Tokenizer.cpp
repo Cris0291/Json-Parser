@@ -19,7 +19,8 @@ void Tokenizer::Parse() {
     std::vector<Token> vectorOutputTokens {};
     bool initMarker {true};
     bool keyStartMarker {true};
-    bool numericPointFound {true};
+    bool numericPointFound {false};
+    bool numericWhiteSpaceFound {false};
 
     TokenState stateNow = TokenState::NewToken;
     TokenState stateNext = TokenState::NewToken;
@@ -109,6 +110,7 @@ void Tokenizer::Parse() {
                 break;
             }
             case TokenState::StringLiteral: {
+                if (jsonStateNow != JsonState::Colon) throw std::invalid_argument("Json was ill-formed. Either a key was missing or was not constructed correctly");
                 if (currChar[0] != '"') {
                     tokenValue += currChar[0];
                     ++currChar;
@@ -142,6 +144,9 @@ void Tokenizer::Parse() {
             case TokenState::NumericLiteral: {
                 if (jsonStateNow != JsonState::Colon) throw std::invalid_argument("Json was ill-formed. Either a key was missing or was not constructed correctly");
                 if (lut::RealNumericDigits.at(currChar[0])) {
+                    if (numericWhiteSpaceFound) {
+                        throw std::invalid_argument("Bad numeric construction");
+                    }
                     if (currChar[0] == '.') {
                         if (numericPointFound) {
                             throw std::invalid_argument("Bad numeric construction");
@@ -150,11 +155,30 @@ void Tokenizer::Parse() {
                     }
                     tokenValue += currChar[0];
                     ++currChar;
+                    stateNext = TokenState::NumericLiteral;
                 }
                 else {
+                    if (currChar[0] == ',') {
+                        token = {TokenState::NumericLiteral, JsonState::Value, tokenValue};
+                        jsonStateNow = JsonState::Value;
+                        stateNext = TokenState::CompleteToken;
+                        numericPointFound = false;
+                        numericWhiteSpaceFound = false;
+                        break;
+                    }
 
+                    if (lut::WhitespaceDigits.at((currChar[0]))) {
+                        numericWhiteSpaceFound = true;
+                        ++currChar;
+                        stateNext = TokenState::NumericLiteral;
+                    }
+
+                   if (lut::StringDigits.at(currChar[0])){
+                       throw std::invalid_argument("Invalid number");
+                   }
                 }
             }
+            break;
             case TokenState::TrueBoolean: {
                 if (jsonStateNow != JsonState::Colon) throw std::invalid_argument("Json was ill-formed. Either a key was missing or was not constructed correctly");
                 if (currChar[0] == ',') {
