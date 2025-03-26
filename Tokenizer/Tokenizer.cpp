@@ -21,6 +21,7 @@ void Tokenizer::Parse() {
     bool keyStartMarker {true};
     bool numericPointFound {false};
     bool numericWhiteSpaceFound {false};
+    bool openCurlyBracesValue {false};
 
     TokenState stateNow = TokenState::NewToken;
     TokenState stateNext = TokenState::NewToken;
@@ -43,12 +44,13 @@ void Tokenizer::Parse() {
                     stateNext = TokenState::NewToken;
                 }
                 else if (currChar[0] == '"') {
-                    if (jsonStateNow == JsonState::Init) {
+                    if (jsonStateNow == JsonState::Init || jsonStateNow == JsonState::Comma || openCurlyBracesValue) {
                         stateNext = TokenState::Key;
                         ++currChar;
                     }
                     else {
                         stateNext = TokenState::StringLiteral;
+                        ++currChar;
                     }
                 }
                 else if (currChar[0] == '{') {
@@ -86,7 +88,6 @@ void Tokenizer::Parse() {
                 break;
             }
             case TokenState::Key: {
-                if (initMarker) throw std::invalid_argument("Json should start with a {");
                 if (keyStartMarker) {
                     if (!lut::KeyValidStart.at(currChar[0]))throw std::invalid_argument("Json key could not be parser into a  valid c++ variable. C++ variables should start with letters or an underscore");
                     keyStartMarker = false;
@@ -110,15 +111,15 @@ void Tokenizer::Parse() {
                 break;
             }
             case TokenState::StringLiteral: {
-                if (jsonStateNow != JsonState::Colon) throw std::invalid_argument("Json was ill-formed. Either a key was missing or was not constructed correctly");
-                if (currChar[0] != '"') {
-                    tokenValue += currChar[0];
+                if (jsonStateNow != JsonState::Colon) throw std::invalid_argument("Json was ill-formed. Either a key was missing or something was not constructed correctly");
+                if (currChar[0] == '"') {
+                    stateNext = TokenState::CompleteToken;
+                    jsonStateNow = JsonState::Value;
+                    token = {TokenState::StringLiteral, JsonState::Value, tokenValue};
                     ++currChar;
                 }
-                else {
-                    ++currChar[0];
-                    stateNext = TokenState::CompleteToken;
-                }
+                tokenValue += currChar[0];
+                ++currChar;
             }
             case TokenState::Open_Array: {
                 tokenValue += currChar[0];
@@ -130,6 +131,7 @@ void Tokenizer::Parse() {
                 tokenValue += currChar[0];
                 stateNext = TokenState::CompleteToken;
 
+
                 if (initMarker && std::distance(json_value.begin(), currChar) == 0) {
                     token = {TokenState::Open_Parenthesis, JsonState::Init, tokenValue};
                     jsonStateNow = JsonState::Init;
@@ -138,6 +140,7 @@ void Tokenizer::Parse() {
                 else {
                     token = {TokenState::Open_Parenthesis, JsonState::Value, tokenValue};
                     jsonStateNow = JsonState::Value;
+                    openCurlyBracesValue = true;
                 }
                 break;
             }
@@ -229,6 +232,9 @@ void Tokenizer::Parse() {
 
         }
         stateNow = stateNext;
+    }
+    if (stateNow == TokenState::StringLiteral || stateNow == TokenState::Key) {
+        throw std::invalid_argument("Missing quotation mark");
     }
 }
 
