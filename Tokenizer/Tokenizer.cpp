@@ -21,7 +21,6 @@ void Tokenizer::Parse() {
     bool keyStartMarker {true};
     bool numericPointFound {false};
     bool numericWhiteSpaceFound {false};
-    bool openCurlyBracesValue {false};
 
     TokenState stateNow = TokenState::NewToken;
     TokenState stateNext = TokenState::NewToken;
@@ -44,7 +43,7 @@ void Tokenizer::Parse() {
                     stateNext = TokenState::NewToken;
                 }
                 else if (currChar[0] == '"') {
-                    if (jsonStateNow == JsonState::Init || jsonStateNow == JsonState::Comma || openCurlyBracesValue) {
+                    if (jsonStateNow == JsonState::Init || jsonStateNow == JsonState::Comma || jsonStateNow == JsonState::ValueOpenParenthesis) {
                         stateNext = TokenState::Key;
                         ++currChar;
                     }
@@ -138,11 +137,20 @@ void Tokenizer::Parse() {
                     initMarker = false;
                 }
                 else {
-                    token = {TokenState::Open_Parenthesis, JsonState::Value, tokenValue};
-                    jsonStateNow = JsonState::Value;
-                    openCurlyBracesValue = true;
+                    token = {TokenState::Open_Parenthesis, JsonState::ValueOpenParenthesis, tokenValue};
+                    jsonStateNow = JsonState::ValueOpenParenthesis;
                 }
                 break;
+            }
+            case TokenState::Close_Parenthesis: {
+                if (jsonStateNow == JsonState::Comma) throw std::invalid_argument("Trailing commas are not allowed");
+                if (jsonStateNow != JsonState::Value) throw std::invalid_argument("Json was ill-formed");
+
+                tokenValue += currChar[0];
+                ++currChar;
+                stateNext = TokenState::CompleteToken;
+                jsonStateNow = JsonState::Value;
+                token = {TokenState::Close_Parenthesis, JsonState::Value, tokenValue};
             }
             case TokenState::NumericLiteral: {
                 if (jsonStateNow != JsonState::Colon) throw std::invalid_argument("Json was ill-formed. Either a key was missing or was not constructed correctly");
