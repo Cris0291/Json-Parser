@@ -27,6 +27,7 @@ namespace State {
         Key,
         Colon,
         Value,
+        ValueOpenParenthesis,
         Comma,
         Close,
         Unknown
