@@ -21,7 +21,7 @@ namespace lut {
     constexpr auto NumericDigits = MakeTable("0123456789");
     constexpr auto RealNumericDigits = MakeTable(".0123456789");
     constexpr auto KeyDigits = MakeTable("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789");
-    constexpr auto KeyValidStart = MakeTable("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_");
+    constexpr auto KeyValidStart = MakeTable("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_!@#$%^&*()-=+[{]}|;:'\"0123456789,<.>/?\n\t\\");
     constexpr auto StringDigits = MakeTable("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
     constexpr auto TrueBooleanDigits = MakeTable("true");
     constexpr auto FalseBooleanDigits = MakeTable("false");

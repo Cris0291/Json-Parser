@@ -1,6 +1,7 @@
 
 #ifndef TOKENSTATE_H
 #define TOKENSTATE_H
+#include <unordered_set>
 
 #endif //TOKENSTATE_H
 
@@ -28,7 +29,9 @@ namespace State {
         Colon,
         Value,
         ValueOpenParenthesis,
+        ValueOpenArray,
         Comma,
+        CommaArray,
         Close,
         Unknown
     };
@@ -37,4 +40,6 @@ namespace State {
         JsonState jsonType;
         std::string value;
     };
+    using CorrectStates = std::unordered_set<JsonState>;
+    inline CorrectStates value_correct_states = {JsonState::Colon, JsonState::ValueOpenArray, JsonState::CommaArray};
 }
