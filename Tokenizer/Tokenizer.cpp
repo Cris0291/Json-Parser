@@ -1,10 +1,8 @@
 #include "Tokenizer.h"
 #include "TokenState.h"
-
-#include <ranges>
-
 #include "LookUpTable.h"
 #include "TokenNode.h"
+
 using namespace State;
 using namespace  Node;
 
@@ -32,6 +30,7 @@ void Tokenizer::Parse() {
     int curly_brace_balance{};
     int square_brace_balance {};
 
+    std::stack<int> recursive_state{};
 
     while (currChar != json_value.end()) {
         switch (stateNow) {
@@ -132,6 +131,7 @@ void Tokenizer::Parse() {
                 jsonStateNow = JsonState::ValueOpenArray;
                 stateNext = TokenState::CompleteToken;
                 token = {TokenState::Open_Array, JsonState::ValueOpenArray, tokenValue};
+                recursive_state.push(1);
                 break;
             }
             case TokenState::Close_Array: {
@@ -143,6 +143,7 @@ void Tokenizer::Parse() {
                 stateNext = TokenState::CompleteToken;
                 jsonStateNow = JsonState::Value;
                 token = {TokenState::Close_Array, JsonState::Value, tokenValue};
+                recursive_state.pop();
                 break;
             }
             case TokenState::Open_Parenthesis: {
@@ -160,12 +161,14 @@ void Tokenizer::Parse() {
                     if (jsonStateNow != JsonState::Colon && square_brace_balance <= 0) throw std::invalid_argument("Json was ill-formed. Either a key was missing or something was not constructed correctly");
                     token = {TokenState::Open_Parenthesis, JsonState::ValueOpenParenthesis, tokenValue};
                     jsonStateNow = JsonState::ValueOpenParenthesis;
+                    recursive_state.push(0);
                 }
                 break;
             }
             case TokenState::Close_Parenthesis: {
                 if (jsonStateNow == JsonState::Comma) throw std::invalid_argument("Trailing commas are not allowed");
                 if (jsonStateNow != JsonState::Value) throw std::invalid_argument("Json was ill-formed");
+                recursive_state.pop();
 
                 tokenValue += currChar[0];
                 ++currChar;
