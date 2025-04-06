@@ -31,6 +31,7 @@ void Tokenizer::Parse() {
     int square_brace_balance {};
 
     std::stack<int> recursive_state{};
+    recursive_state.push(0);
 
     while (currChar != json_value.end()) {
         switch (stateNow) {
@@ -43,9 +44,15 @@ void Tokenizer::Parse() {
                     stateNext = TokenState::NewToken;
                 }
                 else if (currChar[0] == '"') {
-                    if (jsonStateNow == JsonState::Init || jsonStateNow == JsonState::Comma || jsonStateNow == JsonState::ValueOpenParenthesis) {
-                        stateNext = TokenState::Key;
-                        ++currChar;
+                    if (recursive_state.top() == 0) {
+                        if (jsonStateNow == JsonState::Init || jsonStateNow == JsonState::Comma || jsonStateNow == JsonState::ValueOpenParenthesis) {
+                            stateNext = TokenState::Key;
+                            ++currChar;
+                        }
+                        else {
+                            stateNext = TokenState::StringLiteral;
+                            ++currChar;
+                        }
                     }
                     else {
                         stateNext = TokenState::StringLiteral;
@@ -112,7 +119,9 @@ void Tokenizer::Parse() {
                 break;
             }
             case TokenState::StringLiteral: {
-                if (jsonStateNow != JsonState::Colon && jsonStateNow != JsonState::ValueOpenArray && jsonStateNow == JsonState::CommaArray) throw std::invalid_argument("Json was ill-formed. Either a key was missing or something was not constructed correctly");
+                if ((recursive_state.top() == 0 && jsonStateNow != JsonState::Colon)) throw std::invalid_argument("Json was ill-formed. Either a key was missing or something was not constructed correctly");
+                if (recursive_state.top() == 1 && jsonStateNow != JsonState::Comma || jsonStateNow != JsonState::ValueOpenArray) throw std::invalid_argument("Json was ill-formed. Either a key was missing or something was not constructed correctly");
+
                 if (currChar[0] == '"') {
                     stateNext = TokenState::CompleteToken;
                     jsonStateNow = JsonState::Value;
@@ -125,7 +134,9 @@ void Tokenizer::Parse() {
                 break;
             }
             case TokenState::Open_Array: {
-                if (jsonStateNow != JsonState::Colon && square_brace_balance <= 0) throw std::invalid_argument("Json was ill-formed. Either a key was missing or something was not constructed correctly");
+                if (recursive_state.top() == 0 && jsonStateNow != JsonState::Colon) throw std::invalid_argument("Json was ill-formed. Either a key was missing or something was not constructed correctly");
+                if (recursive_state.top() == 1 && jsonStateNow != JsonState::Comma) throw std::invalid_argument("Json was ill-formed. Either a key was missing or something was not constructed correctly");
+
                 tokenValue += currChar[0];
                 ++currChar;
                 jsonStateNow = JsonState::ValueOpenArray;
@@ -152,13 +163,15 @@ void Tokenizer::Parse() {
                 stateNext = TokenState::CompleteToken;
 
 
-                if (initMarker && std::distance(json_value.begin(), currChar) == 0) {
+                if (initMarker) {
                     token = {TokenState::Open_Parenthesis, JsonState::Init, tokenValue};
                     jsonStateNow = JsonState::Init;
                     initMarker = false;
                 }
                 else {
-                    if (jsonStateNow != JsonState::Colon && square_brace_balance <= 0) throw std::invalid_argument("Json was ill-formed. Either a key was missing or something was not constructed correctly");
+                    if (recursive_state.top() == 0 && jsonStateNow != JsonState::Colon) throw std::invalid_argument("Json was ill-formed. Either a key was missing or something was not constructed correctly");
+                    if (recursive_state.top() == 1 && jsonStateNow != JsonState::Comma) throw std::invalid_argument("Json was ill-formed. Either a key was missing or something was not constructed correctly");
+
                     token = {TokenState::Open_Parenthesis, JsonState::ValueOpenParenthesis, tokenValue};
                     jsonStateNow = JsonState::ValueOpenParenthesis;
                     recursive_state.push(0);
