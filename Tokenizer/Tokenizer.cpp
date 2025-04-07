@@ -119,8 +119,14 @@ void Tokenizer::Parse() {
                 break;
             }
             case TokenState::StringLiteral: {
-                if ((recursive_state.top() == 0 && jsonStateNow != JsonState::Colon)) throw std::invalid_argument("Json was ill-formed. Either a key was missing or something was not constructed correctly");
-                if (recursive_state.top() == 1 && jsonStateNow != JsonState::Comma || jsonStateNow != JsonState::ValueOpenArray) throw std::invalid_argument("Json was ill-formed. Either a key was missing or something was not constructed correctly");
+                if (recursive_state.top() == 0 && jsonStateNow != JsonState::Colon) throw std::invalid_argument("Json was ill-formed. Either a key was missing or something was not constructed correctly");
+                if(recursive_state.top() == 1) {
+                    if (jsonStateNow != JsonState::Comma) {
+                         if (jsonStateNow != JsonState::ValueOpenArray) {
+                             throw std::invalid_argument("Json was ill-formed. Either a key was missing or something was not constructed correctly");
+                         }
+                    }
+                }
 
                 if (currChar[0] == '"') {
                     stateNext = TokenState::CompleteToken;
@@ -135,7 +141,13 @@ void Tokenizer::Parse() {
             }
             case TokenState::Open_Array: {
                 if (recursive_state.top() == 0 && jsonStateNow != JsonState::Colon) throw std::invalid_argument("Json was ill-formed. Either a key was missing or something was not constructed correctly");
-                if (recursive_state.top() == 1 && jsonStateNow != JsonState::Comma) throw std::invalid_argument("Json was ill-formed. Either a key was missing or something was not constructed correctly");
+                if(recursive_state.top() == 1) {
+                    if (jsonStateNow != JsonState::Comma) {
+                        if (jsonStateNow != JsonState::ValueOpenArray) {
+                            throw std::invalid_argument("Json was ill-formed. Either a key was missing or something was not constructed correctly");
+                        }
+                    }
+                }
 
                 tokenValue += currChar[0];
                 ++currChar;
@@ -170,7 +182,13 @@ void Tokenizer::Parse() {
                 }
                 else {
                     if (recursive_state.top() == 0 && jsonStateNow != JsonState::Colon) throw std::invalid_argument("Json was ill-formed. Either a key was missing or something was not constructed correctly");
-                    if (recursive_state.top() == 1 && jsonStateNow != JsonState::Comma) throw std::invalid_argument("Json was ill-formed. Either a key was missing or something was not constructed correctly");
+                    if(recursive_state.top() == 1) {
+                        if (jsonStateNow != JsonState::Comma) {
+                            if (jsonStateNow != JsonState::ValueOpenArray) {
+                                throw std::invalid_argument("Json was ill-formed. Either a key was missing or something was not constructed correctly");
+                            }
+                        }
+                    }
 
                     token = {TokenState::Open_Parenthesis, JsonState::ValueOpenParenthesis, tokenValue};
                     jsonStateNow = JsonState::ValueOpenParenthesis;
@@ -191,7 +209,15 @@ void Tokenizer::Parse() {
                 break;
             }
             case TokenState::NumericLiteral: {
-                if (jsonStateNow != JsonState::Colon && square_brace_balance <= 0) throw std::invalid_argument("Json was ill-formed. Either a key was missing or was not constructed correctly");
+                if (recursive_state.top() == 0 && jsonStateNow != JsonState::Colon) throw std::invalid_argument("Json was ill-formed. Either a key was missing or something was not constructed correctly");
+                if(recursive_state.top() == 1) {
+                    if (jsonStateNow != JsonState::Comma) {
+                         if (jsonStateNow != JsonState::ValueOpenArray) {
+                             throw std::invalid_argument("Json was ill-formed. Either a key was missing or something was not constructed correctly");
+                         }
+                    }
+                }
+                
                 if (lut::RealNumericDigits.at(currChar[0])) {
                     if (numericWhiteSpaceFound) {
                         throw std::invalid_argument("Bad numeric construction");
@@ -228,8 +254,17 @@ void Tokenizer::Parse() {
                 }
             }
             break;
+
             case TokenState::TrueBoolean: {
-                if (jsonStateNow != JsonState::Colon && square_brace_balance <= 0) throw std::invalid_argument("Json was ill-formed. Either a key was missing or was not constructed correctly");
+                if (recursive_state.top() == 0 && jsonStateNow != JsonState::Colon) throw std::invalid_argument("Json was ill-formed. Either a key was missing or something was not constructed correctly");
+                if(recursive_state.top() == 1) {
+                    if (jsonStateNow != JsonState::Comma) {
+                        if (jsonStateNow != JsonState::ValueOpenArray) {
+                            throw std::invalid_argument("Json was ill-formed. Either a key was missing or something was not constructed correctly");
+                        }
+                    }
+                }
+
                 if (currChar[0] == ',') {
                     if (tokenValue.size() != 4) throw std::invalid_argument("true boolean was not formed correctly");
 
@@ -245,7 +280,15 @@ void Tokenizer::Parse() {
                 break;
             }
             case TokenState::FalseBoolean: {
-                if (jsonStateNow != JsonState::Colon && square_brace_balance <= 0) throw std::invalid_argument("Json was ill-formed. Either a key was missing or was not constructed correctly");
+                if (recursive_state.top() == 0 && jsonStateNow != JsonState::Colon) throw std::invalid_argument("Json was ill-formed. Either a key was missing or something was not constructed correctly");
+                if(recursive_state.top() == 1) {
+                    if (jsonStateNow != JsonState::Comma) {
+                        if (jsonStateNow != JsonState::ValueOpenArray) {
+                            throw std::invalid_argument("Json was ill-formed. Either a key was missing or something was not constructed correctly");
+                        }
+                    }
+                }
+
                 if (currChar[0] == ',') {
                     if (tokenValue.size() != 4) throw std::invalid_argument("false boolean was not formed correctly");
 
