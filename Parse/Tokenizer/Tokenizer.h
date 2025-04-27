@@ -6,6 +6,8 @@
 
 #include <string>
 #include <iterator>
+#include <ranges>
+#include <stack>
 
 
 class Tokenizer{

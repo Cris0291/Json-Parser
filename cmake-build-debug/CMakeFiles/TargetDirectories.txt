@@ -1,0 +1,8 @@
+C:/Users/cris0/OneDrive/Escritorio/Json/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/cris0/OneDrive/Escritorio/Json/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/cris0/OneDrive/Escritorio/Json/cmake-build-debug/Parse/CMakeFiles/Parse.dir
+C:/Users/cris0/OneDrive/Escritorio/Json/cmake-build-debug/Parse/CMakeFiles/edit_cache.dir
+C:/Users/cris0/OneDrive/Escritorio/Json/cmake-build-debug/Parse/CMakeFiles/rebuild_cache.dir
+C:/Users/cris0/OneDrive/Escritorio/Json/cmake-build-debug/Interface/CMakeFiles/Interface.dir
+C:/Users/cris0/OneDrive/Escritorio/Json/cmake-build-debug/Interface/CMakeFiles/edit_cache.dir
+C:/Users/cris0/OneDrive/Escritorio/Json/cmake-build-debug/Interface/CMakeFiles/rebuild_cache.dir

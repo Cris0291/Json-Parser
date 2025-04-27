@@ -15,6 +15,7 @@ Tokenizer::Tokenizer(std::string &&json) noexcept : json_value{std::move(json)} 
 void Tokenizer::Parse() {
     auto currChar = json_value.begin();
     std::vector<Token> vectorOutputTokens {};
+
     bool initMarker {true};
     bool keyStartMarker {true};
     bool numericPointFound {false};
@@ -231,6 +232,7 @@ void Tokenizer::Parse() {
                     tokenValue += currChar[0];
                     ++currChar;
                     stateNext = TokenState::NumericLiteral;
+                    break;
                 }
                 else {
                     if (currChar[0] == ',') {
@@ -246,14 +248,13 @@ void Tokenizer::Parse() {
                         numericWhiteSpaceFound = true;
                         ++currChar;
                         stateNext = TokenState::NumericLiteral;
+                        break;
                     }
 
-                   if (lut::StringDigits.at(currChar[0])){
-                       throw std::invalid_argument("Invalid number");
-                   }
+                    throw std::invalid_argument("Invalid number");
+
                 }
             }
-            break;
 
             case TokenState::TrueBoolean: {
                 if (recursive_state.top() == 0 && jsonStateNow != JsonState::Colon) throw std::invalid_argument("Json was ill-formed. Either a key was missing or something was not constructed correctly");

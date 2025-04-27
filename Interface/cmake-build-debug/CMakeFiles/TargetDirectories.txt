@@ -1,0 +1,3 @@
+C:/Users/cris0/OneDrive/Escritorio/Json/Interface/cmake-build-debug/CMakeFiles/Interface.dir
+C:/Users/cris0/OneDrive/Escritorio/Json/Interface/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/cris0/OneDrive/Escritorio/Json/Interface/cmake-build-debug/CMakeFiles/rebuild_cache.dir
