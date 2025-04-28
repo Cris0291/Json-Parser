@@ -1,5 +1,8 @@
 #include "Tokenizer.h"
-#include "TokenState.h"
+
+#include <stack>
+
+
 #include "LookUpTable.h"
 #include "TokenNode.h"
 
@@ -12,7 +15,7 @@ Tokenizer::Tokenizer(std::string &&json) noexcept : json_value{std::move(json)} 
 
 
 
-void Tokenizer::Parse() {
+std::vector<Token> Tokenizer::Parse() {
     auto currChar = json_value.begin();
     std::vector<Token> vectorOutputTokens {};
 
@@ -335,5 +338,7 @@ void Tokenizer::Parse() {
     if (stateNow == TokenState::StringLiteral || stateNow == TokenState::Key) {
         throw std::invalid_argument("Missing quotation mark");
     }
+
+    return vectorOutputTokens;
 }
 

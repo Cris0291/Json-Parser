@@ -2,6 +2,7 @@
 #ifndef TOKENSTATE_H
 #define TOKENSTATE_H
 #include <unordered_set>
+#include <string>
 
 #endif //TOKENSTATE_H
 

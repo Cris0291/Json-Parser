@@ -41,7 +41,7 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = C$:/Users/cris0/OneDrive/Escritorio/Json/Parse/cmake-build-debug/
 # =============================================================================
-# Object build statements for SHARED_LIBRARY target Parse
+# Object build statements for STATIC_LIBRARY target Parse
 
 
 #############################################
@@ -50,7 +50,6 @@ cmake_ninja_workdir = C$:/Users/cris0/OneDrive/Escritorio/Json/Parse/cmake-build
 build cmake_object_order_depends_target_Parse: phony || .
 
 build CMakeFiles/Parse.dir/Tokenizer/Tokenizer.cpp.obj: CXX_COMPILER__Parse_unscanned_Debug C$:/Users/cris0/OneDrive/Escritorio/Json/Parse/Tokenizer/Tokenizer.cpp || cmake_object_order_depends_target_Parse
-  DEFINES = -DParse_EXPORTS
   DEP_FILE = CMakeFiles\Parse.dir\Tokenizer\Tokenizer.cpp.obj.d
   FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
   INCLUDES = -IC:/Users/cris0/OneDrive/Escritorio/Json/Parse
@@ -58,7 +57,6 @@ build CMakeFiles/Parse.dir/Tokenizer/Tokenizer.cpp.obj: CXX_COMPILER__Parse_unsc
   OBJECT_FILE_DIR = CMakeFiles\Parse.dir\Tokenizer
 
 build CMakeFiles/Parse.dir/Tokenizer/TokenNode.cpp.obj: CXX_COMPILER__Parse_unscanned_Debug C$:/Users/cris0/OneDrive/Escritorio/Json/Parse/Tokenizer/TokenNode.cpp || cmake_object_order_depends_target_Parse
-  DEFINES = -DParse_EXPORTS
   DEP_FILE = CMakeFiles\Parse.dir\Tokenizer\TokenNode.cpp.obj.d
   FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
   INCLUDES = -IC:/Users/cris0/OneDrive/Escritorio/Json/Parse
@@ -67,22 +65,19 @@ build CMakeFiles/Parse.dir/Tokenizer/TokenNode.cpp.obj: CXX_COMPILER__Parse_unsc
 
 
 # =============================================================================
-# Link build statements for SHARED_LIBRARY target Parse
+# Link build statements for STATIC_LIBRARY target Parse
 
 
 #############################################
-# Link the shared library libParse.dll
+# Link the static library libParse.a
 
-build libParse.dll libParse.dll.a: CXX_SHARED_LIBRARY_LINKER__Parse_Debug CMakeFiles/Parse.dir/Tokenizer/Tokenizer.cpp.obj CMakeFiles/Parse.dir/Tokenizer/TokenNode.cpp.obj
+build libParse.a: CXX_STATIC_LIBRARY_LINKER__Parse_Debug CMakeFiles/Parse.dir/Tokenizer/Tokenizer.cpp.obj CMakeFiles/Parse.dir/Tokenizer/TokenNode.cpp.obj
   LANGUAGE_COMPILE_FLAGS = -g
-  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Parse.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  RESTAT = 1
-  TARGET_FILE = libParse.dll
-  TARGET_IMPLIB = libParse.dll.a
-  TARGET_PDB = Parse.dll.dbg
+  TARGET_FILE = libParse.a
+  TARGET_PDB = Parse.a.dbg
 
 
 #############################################
@@ -110,7 +105,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build Parse: phony libParse.dll
+build Parse: phony libParse.a
 
 # =============================================================================
 # Folder targets.
@@ -120,7 +115,7 @@ build Parse: phony libParse.dll
 #############################################
 # Folder: C:/Users/cris0/OneDrive/Escritorio/Json/Parse/cmake-build-debug
 
-build all: phony libParse.dll
+build all: phony libParse.a
 
 # =============================================================================
 # Built-in targets

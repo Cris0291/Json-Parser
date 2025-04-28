@@ -69,7 +69,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 
 # =============================================================================
-# Object build statements for SHARED_LIBRARY target Parse
+# Object build statements for STATIC_LIBRARY target Parse
 
 
 #############################################
@@ -78,37 +78,34 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 build cmake_object_order_depends_target_Parse: phony || .
 
 build Parse/CMakeFiles/Parse.dir/Tokenizer/Tokenizer.cpp.obj: CXX_COMPILER__Parse_unscanned_Debug C$:/Users/cris0/OneDrive/Escritorio/Json/Parse/Tokenizer/Tokenizer.cpp || cmake_object_order_depends_target_Parse
-  DEFINES = -DParse_EXPORTS
   DEP_FILE = Parse\CMakeFiles\Parse.dir\Tokenizer\Tokenizer.cpp.obj.d
   FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/cris0/OneDrive/Escritorio/Json/Parse
   OBJECT_DIR = Parse\CMakeFiles\Parse.dir
   OBJECT_FILE_DIR = Parse\CMakeFiles\Parse.dir\Tokenizer
 
 build Parse/CMakeFiles/Parse.dir/Tokenizer/TokenNode.cpp.obj: CXX_COMPILER__Parse_unscanned_Debug C$:/Users/cris0/OneDrive/Escritorio/Json/Parse/Tokenizer/TokenNode.cpp || cmake_object_order_depends_target_Parse
-  DEFINES = -DParse_EXPORTS
   DEP_FILE = Parse\CMakeFiles\Parse.dir\Tokenizer\TokenNode.cpp.obj.d
   FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/cris0/OneDrive/Escritorio/Json/Parse
   OBJECT_DIR = Parse\CMakeFiles\Parse.dir
   OBJECT_FILE_DIR = Parse\CMakeFiles\Parse.dir\Tokenizer
 
 
 # =============================================================================
-# Link build statements for SHARED_LIBRARY target Parse
+# Link build statements for STATIC_LIBRARY target Parse
 
 
 #############################################
-# Link the shared library Parse\libParse.dll
+# Link the static library Parse\libParse.a
 
-build Parse/libParse.dll Parse/libParse.dll.a: CXX_SHARED_LIBRARY_LINKER__Parse_Debug Parse/CMakeFiles/Parse.dir/Tokenizer/Tokenizer.cpp.obj Parse/CMakeFiles/Parse.dir/Tokenizer/TokenNode.cpp.obj
+build Parse/libParse.a: CXX_STATIC_LIBRARY_LINKER__Parse_Debug Parse/CMakeFiles/Parse.dir/Tokenizer/Tokenizer.cpp.obj Parse/CMakeFiles/Parse.dir/Tokenizer/TokenNode.cpp.obj
   LANGUAGE_COMPILE_FLAGS = -g
-  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = Parse\CMakeFiles\Parse.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  RESTAT = 1
-  TARGET_FILE = Parse\libParse.dll
-  TARGET_IMPLIB = Parse\libParse.dll.a
-  TARGET_PDB = Parse.dll.dbg
+  TARGET_FILE = Parse\libParse.a
+  TARGET_PDB = Parse.a.dbg
 
 
 #############################################
@@ -145,11 +142,12 @@ build Parse/rebuild_cache: phony Parse/CMakeFiles/rebuild_cache.util
 #############################################
 # Order-only phony target for Interface
 
-build cmake_object_order_depends_target_Interface: phony || .
+build cmake_object_order_depends_target_Interface: phony || cmake_object_order_depends_target_Parse
 
 build Interface/CMakeFiles/Interface.dir/main.cpp.obj: CXX_COMPILER__Interface_unscanned_Debug C$:/Users/cris0/OneDrive/Escritorio/Json/Interface/main.cpp || cmake_object_order_depends_target_Interface
   DEP_FILE = Interface\CMakeFiles\Interface.dir\main.cpp.obj.d
   FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/cris0/OneDrive/Escritorio/Json/Parse
   OBJECT_DIR = Interface\CMakeFiles\Interface.dir
   OBJECT_FILE_DIR = Interface\CMakeFiles\Interface.dir
 
@@ -161,9 +159,9 @@ build Interface/CMakeFiles/Interface.dir/main.cpp.obj: CXX_COMPILER__Interface_u
 #############################################
 # Link the executable Interface\Interface.exe
 
-build Interface/Interface.exe: CXX_EXECUTABLE_LINKER__Interface_Debug Interface/CMakeFiles/Interface.dir/main.cpp.obj
+build Interface/Interface.exe: CXX_EXECUTABLE_LINKER__Interface_Debug Interface/CMakeFiles/Interface.dir/main.cpp.obj | Parse/libParse.a || Parse/libParse.a
   FLAGS = -g
-  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  LINK_LIBRARIES = Parse/libParse.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = Interface\CMakeFiles\Interface.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
@@ -201,9 +199,9 @@ build Interface: phony Interface/Interface.exe
 
 build Interface.exe: phony Interface/Interface.exe
 
-build Parse: phony Parse/libParse.dll
+build Parse: phony Parse/libParse.a
 
-build libParse.dll: phony Parse/libParse.dll
+build libParse.a: phony Parse/libParse.a
 
 # =============================================================================
 # Folder targets.
@@ -227,7 +225,7 @@ build Interface/all: phony Interface/Interface.exe
 #############################################
 # Folder: C:/Users/cris0/OneDrive/Escritorio/Json/cmake-build-debug/Parse
 
-build Parse/all: phony Parse/libParse.dll
+build Parse/all: phony Parse/libParse.a
 
 # =============================================================================
 # Built-in targets

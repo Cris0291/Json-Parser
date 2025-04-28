@@ -3,7 +3,7 @@ project(Parse)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_library(Parse SHARED
+add_library(Parse STATIC
         Tokenizer/Tokenizer.cpp
         Tokenizer/Tokenizer.h
         Tokenizer/TokenState.h
