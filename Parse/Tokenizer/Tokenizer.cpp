@@ -238,7 +238,7 @@ std::vector<Token> Tokenizer::Parse() {
                     break;
                 }
                 else {
-                    if (currChar[0] == ',') {
+                    if (currChar[0] == ',' || currChar[0] == '}' || currChar[0] == ']') {
                         token = {TokenState::NumericLiteral, JsonState::Value, tokenValue};
                         jsonStateNow = JsonState::Value;
                         stateNext = TokenState::CompleteToken;
@@ -335,6 +335,10 @@ std::vector<Token> Tokenizer::Parse() {
         }
         stateNow = stateNext;
     }
+
+    if (token.type != TokenState::Close_Parenthesis) throw std::invalid_argument("Json was ill-formed. Missing quotation a close }");
+    vectorOutputTokens.push_back(token);
+
     if (stateNow == TokenState::StringLiteral || stateNow == TokenState::Key) {
         throw std::invalid_argument("Missing quotation mark");
     }

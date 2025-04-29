@@ -13,7 +13,6 @@ int main() {
 
     for (auto token: tokens) {
         std::cout << "Token value: " << token.value << std::endl;
-        std::cout <<"Toekn count" << tokens.size() << std::endl;
     }
 }
 
