@@ -31,10 +31,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Keep fixing bugs">
+    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Fix some more bugs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interface/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Interface/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parse/Tokenizer/Tokenizer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Tokenizer/Tokenizer.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -1355,7 +1353,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "C/C++ File.main.cpp.executor": "Run",
-    "CMake Application.Interface.executor": "Debug",
+    "CMake Application.Interface.executor": "Run",
     "CMake Application.Json_Project.executor": "Run",
     "RunOnceActivity.RadMigrateCodeStyle": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -1453,7 +1451,8 @@
       <workItem from="1745764357946" duration="1640000" />
       <workItem from="1745766265296" duration="3498000" />
       <workItem from="1745841610366" duration="7115000" />
-      <workItem from="1745928064916" duration="6769000" />
+      <workItem from="1745928064916" duration="6837000" />
+      <workItem from="1746014406320" duration="2695000" />
     </task>
     <task id="LOCAL-00001" summary="Add Tokenizer module">
       <option name="closed" value="true" />
@@ -1719,7 +1718,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745849273701</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Fix some more bugs">
+      <option name="closed" value="true" />
+      <created>1745935228078</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1745935228078</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1754,7 +1761,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add cmake project" />
     <MESSAGE value="Add header file instead of module due to problems" />
     <MESSAGE value="I will change the parse function so that it works by changing the state" />
     <MESSAGE value="Add the basic data structure for the parser" />
@@ -1779,7 +1785,8 @@
     <MESSAGE value="Last changes to the tokenizer" />
     <MESSAGE value="Change the structure of the project so that i can have a parent project and many child projects in this case a library and an executable in order to test the json parser" />
     <MESSAGE value="Keep fixing bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Keep fixing bugs" />
+    <MESSAGE value="Fix some more bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix some more bugs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
