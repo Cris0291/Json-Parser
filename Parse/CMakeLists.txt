@@ -10,6 +10,10 @@ add_library(Parse STATIC
         Tokenizer/TokenNode.h
         Tokenizer/TokenNode.cpp
         Tokenizer/LookUpTable.h
+        Deserializer/JsonDescriptor.cpp
+        Deserializer/JsonDescriptor.h
+        Deserializer/JsonValue.cpp
+        Deserializer/JsonValue.h
 )
 
 target_include_directories(Parse PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

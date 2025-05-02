@@ -91,6 +91,20 @@ build Parse/CMakeFiles/Parse.dir/Tokenizer/TokenNode.cpp.obj: CXX_COMPILER__Pars
   OBJECT_DIR = Parse\CMakeFiles\Parse.dir
   OBJECT_FILE_DIR = Parse\CMakeFiles\Parse.dir\Tokenizer
 
+build Parse/CMakeFiles/Parse.dir/Deserializer/JsonDescriptor.cpp.obj: CXX_COMPILER__Parse_unscanned_Debug C$:/Users/cris0/OneDrive/Escritorio/Json/Parse/Deserializer/JsonDescriptor.cpp || cmake_object_order_depends_target_Parse
+  DEP_FILE = Parse\CMakeFiles\Parse.dir\Deserializer\JsonDescriptor.cpp.obj.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/cris0/OneDrive/Escritorio/Json/Parse
+  OBJECT_DIR = Parse\CMakeFiles\Parse.dir
+  OBJECT_FILE_DIR = Parse\CMakeFiles\Parse.dir\Deserializer
+
+build Parse/CMakeFiles/Parse.dir/Deserializer/JsonValue.cpp.obj: CXX_COMPILER__Parse_unscanned_Debug C$:/Users/cris0/OneDrive/Escritorio/Json/Parse/Deserializer/JsonValue.cpp || cmake_object_order_depends_target_Parse
+  DEP_FILE = Parse\CMakeFiles\Parse.dir\Deserializer\JsonValue.cpp.obj.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/cris0/OneDrive/Escritorio/Json/Parse
+  OBJECT_DIR = Parse\CMakeFiles\Parse.dir
+  OBJECT_FILE_DIR = Parse\CMakeFiles\Parse.dir\Deserializer
+
 
 # =============================================================================
 # Link build statements for STATIC_LIBRARY target Parse
@@ -99,7 +113,7 @@ build Parse/CMakeFiles/Parse.dir/Tokenizer/TokenNode.cpp.obj: CXX_COMPILER__Pars
 #############################################
 # Link the static library Parse\libParse.a
 
-build Parse/libParse.a: CXX_STATIC_LIBRARY_LINKER__Parse_Debug Parse/CMakeFiles/Parse.dir/Tokenizer/Tokenizer.cpp.obj Parse/CMakeFiles/Parse.dir/Tokenizer/TokenNode.cpp.obj
+build Parse/libParse.a: CXX_STATIC_LIBRARY_LINKER__Parse_Debug Parse/CMakeFiles/Parse.dir/Tokenizer/Tokenizer.cpp.obj Parse/CMakeFiles/Parse.dir/Tokenizer/TokenNode.cpp.obj Parse/CMakeFiles/Parse.dir/Deserializer/JsonDescriptor.cpp.obj Parse/CMakeFiles/Parse.dir/Deserializer/JsonValue.cpp.obj
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = Parse\CMakeFiles\Parse.dir
   POST_BUILD = cd .
