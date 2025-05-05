@@ -18,6 +18,8 @@ public:
     JsonValue();
     template<typename T>
     JsonValue(T val);
+    template<typename T>
+    T& get() const;
 private:
     ValueType _value;
 };

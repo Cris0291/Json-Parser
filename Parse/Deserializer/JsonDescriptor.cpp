@@ -1,5 +1,6 @@
 #include "JsonDescriptor.h"
 
-int JsonDescriptor::parseJsonToken(State::Token) {
+void JsonDescriptor::createJsonMap(const std::vector<State::Token>& tokens) {
 
 }
+

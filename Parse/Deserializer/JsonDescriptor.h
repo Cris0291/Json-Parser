@@ -8,6 +8,7 @@
 #include <unordered_map>
 #include <vector>
 
+#include "JsonValue.h"
 #include "Tokenizer/TokenState.h"
 
 
@@ -16,8 +17,8 @@ public:
     template<typename T>
     T get(const std::string& key) const;
 private:
-    std::unordered_map<std::string, std::string> json_map;
-    void createJsonMap(std::vector<State::Token>);
+    std::unordered_map<std::string, JsonValue> json_map;
+    void createJsonMap(const std::vector<State::Token>& tokens);
     int parseJsonToken(State::Token);
 };
 
