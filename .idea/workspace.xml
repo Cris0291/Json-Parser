@@ -7,7 +7,6 @@
     <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
     <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
-    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexRemoved" />
     <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="3" type="long" />
   </component>
   <component name="CMakePresetLoader">{
@@ -31,11 +30,13 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Start adding the deserializer functionality">
+    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Keep working on the json descriptor">
+      <change afterPath="$PROJECT_DIR$/Parse/Deserializer/DescriptorState.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parse/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -122,6 +123,11 @@
     </key>
   </component>
   <component name="RunManager" selected="CMake Application.Interface">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Interface" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Json_Project" TARGET_NAME="Interface" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Json_Project" RUN_TARGET_NAME="Interface">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -196,7 +202,10 @@
       <workItem from="1746014406320" duration="2752000" />
       <workItem from="1746100993267" duration="2363000" />
       <workItem from="1746187360170" duration="6480000" />
-      <workItem from="1746446283589" duration="4480000" />
+      <workItem from="1746446283589" duration="5652000" />
+      <workItem from="1746499593740" duration="600000" />
+      <workItem from="1746532798628" duration="966000" />
+      <workItem from="1746534485109" duration="7015000" />
     </task>
     <task id="LOCAL-00001" summary="Add Tokenizer module">
       <option name="closed" value="true" />
@@ -486,7 +495,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746194560432</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Keep working on the json descriptor">
+      <option name="closed" value="true" />
+      <created>1746453208432</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1746453208432</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -521,7 +538,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="I will change the parse function so that it works by changing the state" />
     <MESSAGE value="Add the basic data structure for the parser" />
     <MESSAGE value="Add the finite state machine states" />
     <MESSAGE value="Update cmake" />
@@ -546,7 +562,8 @@
     <MESSAGE value="Fix some more bugs" />
     <MESSAGE value="Add more changes" />
     <MESSAGE value="Start adding the deserializer functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Start adding the deserializer functionality" />
+    <MESSAGE value="Keep working on the json descriptor" />
+    <option name="LAST_COMMIT_MESSAGE" value="Keep working on the json descriptor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

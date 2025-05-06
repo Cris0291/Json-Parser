@@ -14,6 +14,7 @@ add_library(Parse STATIC
         Deserializer/JsonDescriptor.h
         Deserializer/JsonValue.cpp
         Deserializer/JsonValue.h
+        Deserializer/DescriptorState.h
 )
 
 target_include_directories(Parse PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
