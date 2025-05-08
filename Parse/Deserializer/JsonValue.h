@@ -15,7 +15,11 @@ public:
     using JsonObject = std::unordered_map<std::string, JsonValue>;
     using JsonArray = std::vector<JsonValue>;
     using ValueType = std::variant<std::nullptr_t,int,double,bool,std::string, JsonObject, JsonArray>;
-    JsonValue();
+    JsonValue() = default;
+    JsonValue(const JsonValue&) = default;
+    JsonValue(JsonValue&&) = default;
+    JsonValue& operator= (const JsonValue&) = default;
+    JsonValue& operator= (JsonValue&&) = default;
     template<typename T>
     JsonValue(T val);
     template<typename T>

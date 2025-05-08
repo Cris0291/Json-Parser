@@ -45,7 +45,7 @@ void JsonDescriptor::createJsonMap(const std::vector<State::Token> &tokens) {
                 break;
             }
             case ParseState::CompleteState: {
-                json_map[currKey] = currValue;
+                json_map.emplace(currKey, std::move(currValue));
                 stateNext = ParseState::NewState;
                 break;
             }
