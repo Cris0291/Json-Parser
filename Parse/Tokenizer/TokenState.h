@@ -29,6 +29,8 @@ namespace State {
         Key,
         Colon,
         Value,
+        ValueInt,
+        ValueDouble,
         ValueOpenParenthesis,
         ValueOpenArray,
         Comma,

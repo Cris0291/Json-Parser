@@ -20,7 +20,7 @@ private:
     std::unordered_map<std::string, JsonValue> json_map;
     void createJsonMap(const std::vector<State::Token>& tokens);
     template<typename  T>
-    T parseJsonToken(std::string value);
+    static T parseJsonToken(const std::string& value);
 };
 
 

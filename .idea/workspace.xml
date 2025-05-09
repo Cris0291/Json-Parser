@@ -31,10 +31,12 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Add more changes to the parsing state">
+    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Add more changes to the descriptor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parse/Tokenizer/TokenState.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Tokenizer/TokenState.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parse/Tokenizer/Tokenizer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Tokenizer/Tokenizer.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -134,11 +136,6 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="main.cpp" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Json_Project" TARGET_NAME="main.cpp" CONFIG_NAME="main.cpp">
       <option name="sourceFile" value="Interface\main.cpp" />
       <method v="2">
@@ -207,7 +204,8 @@
       <workItem from="1746499593740" duration="600000" />
       <workItem from="1746532798628" duration="966000" />
       <workItem from="1746534485109" duration="7076000" />
-      <workItem from="1746619153057" duration="6579000" />
+      <workItem from="1746619153057" duration="6614000" />
+      <workItem from="1746705560913" duration="6476000" />
     </task>
     <task id="LOCAL-00001" summary="Add Tokenizer module">
       <option name="closed" value="true" />
@@ -513,7 +511,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746541775313</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Add more changes to the descriptor">
+      <option name="closed" value="true" />
+      <created>1746671393834</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1746671393834</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -548,7 +554,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add the finite state machine states" />
     <MESSAGE value="Update cmake" />
     <MESSAGE value="Add look up table" />
     <MESSAGE value="Add Token node implementations" />
@@ -573,7 +578,8 @@
     <MESSAGE value="Start adding the deserializer functionality" />
     <MESSAGE value="Keep working on the json descriptor" />
     <MESSAGE value="Add more changes to the parsing state" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add more changes to the parsing state" />
+    <MESSAGE value="Add more changes to the descriptor" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add more changes to the descriptor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1564,11 +1570,6 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Parse/Tokenizer/Tokenizer.cpp</url>
-          <line>241</line>
-          <option name="timeStamp" value="217" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Parse/Tokenizer/Tokenizer.cpp</url>
           <line>242</line>
           <option name="timeStamp" value="218" />
         </line-breakpoint>
@@ -2026,6 +2027,11 @@
           <url>file://$PROJECT_DIR$/Parse/Tokenizer/Tokenizer.cpp</url>
           <line>338</line>
           <option name="timeStamp" value="314" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Parse/Tokenizer/Tokenizer.cpp</url>
+          <line>241</line>
+          <option name="timeStamp" value="316" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
