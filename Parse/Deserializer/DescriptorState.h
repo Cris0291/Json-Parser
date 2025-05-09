@@ -12,8 +12,10 @@ enum class ParseState {
     KeyState,
     StringState,
     NumberState,
-    ObjectState,
-    ArrayState
+    OpenObjectState,
+    CloseObjectState,
+    OpenArrayState,
+    CloseArrayState
 };
 
 #endif //DESCRIPTORSTATE_H

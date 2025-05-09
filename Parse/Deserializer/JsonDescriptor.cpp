@@ -1,5 +1,6 @@
 #include "JsonDescriptor.h"
 
+#include <stack>
 #include <stdexcept>
 
 #include "DescriptorState.h"
@@ -15,6 +16,9 @@ void JsonDescriptor::createJsonMap(const std::vector<State::Token> &tokens) {
     ParseState stateNow = ParseState::NewState;
     ParseState stateNext = ParseState::NewState;
 
+    std::stack<JsonRecursiveToken> recursive_state {};
+    int currState {0};
+
     while (currToken != tokens.end()) {
         switch (stateNow) {
             case ParseState::NewState: {
@@ -29,6 +33,9 @@ void JsonDescriptor::createJsonMap(const std::vector<State::Token> &tokens) {
                 }
                 else if (currToken[0].type == State::TokenState::TrueBoolean) {
                     stateNext = ParseState::BoolState;
+                }
+                else if (currToken[0].type == State::TokenState::Open_Parenthesis) {
+                    stateNext = ParseState::OpenObjectState;
                 }
                 break;
             }
@@ -63,6 +70,16 @@ void JsonDescriptor::createJsonMap(const std::vector<State::Token> &tokens) {
                 ++currToken;
                 stateNext = ParseState::CompleteState;
                 break;
+            }
+            case ParseState::OpenObjectState: {
+                if (currToken[0].jsonType == State::JsonState::Init) {
+                    ++currToken;
+                    continue;
+                }
+                currState = 1;
+                JsonObject object {};
+                auto recursive_token {JsonRecursiveToken(currState, object)};
+                recursive_state.push(recursive_token);
             }
             case ParseState::CompleteState: {
                 json_map.emplace(currKey, std::move(currValue));

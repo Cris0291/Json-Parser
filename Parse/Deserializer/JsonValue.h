@@ -6,14 +6,17 @@
 #define JSONVALUE_H
 #include <string>
 #include <unordered_map>
+#include <utility>
 #include <variant>
 #include <vector>
 
+class JsonValue;
+
+using JsonObject = std::unordered_map<std::string, JsonValue>;
+using JsonArray = std::vector<JsonValue>;
 
 class JsonValue {
 public:
-    using JsonObject = std::unordered_map<std::string, JsonValue>;
-    using JsonArray = std::vector<JsonValue>;
     using ValueType = std::variant<std::nullptr_t,int,double,bool,std::string, JsonObject, JsonArray>;
     JsonValue() = default;
     JsonValue(const JsonValue&) = default;
@@ -28,6 +31,13 @@ private:
     ValueType _value;
 };
 
+struct JsonRecursiveToken {
+    int state;
+    std::string currKey {};
+    JsonValue currValue {};
+    std::variant<JsonObject, JsonArray> value;
+    JsonRecursiveToken(const int s, std::variant<JsonObject, JsonArray>&& v) : state{s}, value{v}{}
+};
 
 
 #endif //JSONVALUE_H
