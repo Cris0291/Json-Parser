@@ -40,13 +40,19 @@ void JsonDescriptor::createJsonMap(const std::vector<State::Token> &tokens) {
                 break;
             }
             case ParseState::KeyState: {
-                currKey = currToken[0].value;
+                if (currState == 0) currKey = currToken[0].value;
+                if (currState == 1) {
+                    recursive_state.top().currKey = currToken[0].value;
+                }
                 ++currToken;
                 stateNext = ParseState::NewState;
                 break;
             }
             case ParseState::StringState: {
-                currValue = JsonValue(currToken[0].value);
+                if (currState == 0) currValue = JsonValue(currToken[0].value);
+                if (currState == 1) {
+                    recursive_state.top().currValue = JsonValue(currToken[0].value);
+                }
                 ++currToken;
                 stateNext = ParseState::CompleteState;
                 break;
@@ -54,11 +60,17 @@ void JsonDescriptor::createJsonMap(const std::vector<State::Token> &tokens) {
             case ParseState::NumberState: {
                 if (currToken[0].jsonType == State::JsonState::ValueInt ) {
                     const auto result = parseJsonToken<int>(currToken[0].value);
-                    currValue = JsonValue(result);
+                    if (currState == 0) currValue = JsonValue(result);
+                    if (currState == 1) {
+                        recursive_state.top().currValue = JsonValue(result);
+                    }
                 }
                 else {
                     const auto result =  parseJsonToken<double>(currToken[0].value);
-                    currValue = JsonValue(result);
+                    if (currState == 0) currValue = JsonValue(result);
+                    if (currState == 1) {
+                        recursive_state.top().currValue = JsonValue(result);
+                    }
                 }
                 ++currToken;
                 stateNext = ParseState::CompleteState;
@@ -66,7 +78,10 @@ void JsonDescriptor::createJsonMap(const std::vector<State::Token> &tokens) {
             }
             case ParseState::BoolState: {
                 const bool result = parseJsonToken<bool>(currToken[0].value);
-                currValue = JsonValue(result);
+                if (currState == 0) currValue = JsonValue(result);
+                if (currState == 1) {
+                    recursive_state.top().currValue = JsonValue(result);
+                }
                 ++currToken;
                 stateNext = ParseState::CompleteState;
                 break;
@@ -74,15 +89,23 @@ void JsonDescriptor::createJsonMap(const std::vector<State::Token> &tokens) {
             case ParseState::OpenObjectState: {
                 if (currToken[0].jsonType == State::JsonState::Init) {
                     ++currToken;
-                    continue;
+                    stateNext = ParseState::NewState;
+                    break;
                 }
                 currState = 1;
+                ++currToken;
                 JsonObject object {};
                 auto recursive_token {JsonRecursiveToken(currState, object)};
                 recursive_state.push(recursive_token);
+                stateNext = ParseState::NewState;
+                break;
             }
             case ParseState::CompleteState: {
-                json_map.emplace(currKey, std::move(currValue));
+                if (currState == 0) json_map.emplace(currKey, std::move(currValue));
+                if (currState == 1) {
+                    auto& result = recursive_state.top();
+                    result.value.
+                }
                 stateNext = ParseState::NewState;
                 break;
             }
