@@ -102,9 +102,8 @@ void JsonDescriptor::createJsonMap(const std::vector<State::Token> &tokens) {
             }
             case ParseState::CompleteState: {
                 if (currState == 0) json_map.emplace(currKey, std::move(currValue));
-                if (currState == 1) {
-                    auto& result = recursive_state.top();
-                    result.value.
+                if (currState == 1 || currState == 2) {
+                    updateVariant(recursive_state.top());
                 }
                 stateNext = ParseState::NewState;
                 break;

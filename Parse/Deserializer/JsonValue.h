@@ -39,5 +39,6 @@ struct JsonRecursiveToken {
     JsonRecursiveToken(const int s, std::variant<JsonObject, JsonArray>&& v) : state{s}, value{v}{}
 };
 
+void updateVariant(JsonRecursiveToken& token);
 
 #endif //JSONVALUE_H

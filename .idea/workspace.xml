@@ -31,9 +31,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Add more changes to the parsing functionality">
+    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Add more changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -204,7 +206,8 @@
       <workItem from="1746619153057" duration="6614000" />
       <workItem from="1746705560913" duration="6610000" />
       <workItem from="1746792015919" duration="9581000" />
-      <workItem from="1747051260556" duration="6991000" />
+      <workItem from="1747051260556" duration="7034000" />
+      <workItem from="1747137547379" duration="5373000" />
     </task>
     <task id="LOCAL-00001" summary="Add Tokenizer module">
       <option name="closed" value="true" />
@@ -534,7 +537,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746808615228</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Add more changes">
+      <option name="closed" value="true" />
+      <created>1747111703331</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1747111703346</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -587,14 +598,14 @@
     <MESSAGE value="Change the structure of the project so that i can have a parent project and many child projects in this case a library and an executable in order to test the json parser" />
     <MESSAGE value="Keep fixing bugs" />
     <MESSAGE value="Fix some more bugs" />
-    <MESSAGE value="Add more changes" />
     <MESSAGE value="Start adding the deserializer functionality" />
     <MESSAGE value="Keep working on the json descriptor" />
     <MESSAGE value="Add more changes to the parsing state" />
     <MESSAGE value="Add more changes to the descriptor" />
     <MESSAGE value="Keep working on the parsing functionality" />
     <MESSAGE value="Add more changes to the parsing functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add more changes to the parsing functionality" />
+    <MESSAGE value="Add more changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add more changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
