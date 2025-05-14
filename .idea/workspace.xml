@@ -31,7 +31,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Add variant test function">
+    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Kepp working on the recursive functionality">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
@@ -206,7 +206,7 @@
       <workItem from="1746792015919" duration="9581000" />
       <workItem from="1747051260556" duration="7034000" />
       <workItem from="1747137547379" duration="5429000" />
-      <workItem from="1747223863814" duration="5938000" />
+      <workItem from="1747223863814" duration="5968000" />
     </task>
     <task id="LOCAL-00001" summary="Add Tokenizer module">
       <option name="closed" value="true" />
@@ -587,7 +587,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Modify tokenizer and token node" />
     <MESSAGE value="Add the rest of the lookups" />
     <MESSAGE value="Add changes to the tokenizer" />
     <MESSAGE value="Keep working on those tokens" />
@@ -612,7 +611,8 @@
     <MESSAGE value="Add more changes to the parsing functionality" />
     <MESSAGE value="Add more changes" />
     <MESSAGE value="Add variant test function" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add variant test function" />
+    <MESSAGE value="Kepp working on the recursive functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Kepp working on the recursive functionality" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
