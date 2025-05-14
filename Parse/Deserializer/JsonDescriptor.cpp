@@ -19,6 +19,9 @@ void JsonDescriptor::createJsonMap(const std::vector<State::Token> &tokens) {
     std::stack<JsonRecursiveToken> recursive_state {};
     int currState {0};
 
+    bool isClosedObject {false};
+    bool isClosedArray {false};
+
     while (currToken != tokens.end()) {
         switch (stateNow) {
             case ParseState::NewState: {
@@ -36,6 +39,9 @@ void JsonDescriptor::createJsonMap(const std::vector<State::Token> &tokens) {
                 }
                 else if (currToken[0].type == State::TokenState::Open_Parenthesis) {
                     stateNext = ParseState::OpenObjectState;
+                }
+                else if (currToken[0].type == State::TokenState::Close_Parenthesis) {
+                    stateNext = ParseState::CloseObjectState;
                 }
                 break;
             }
@@ -100,10 +106,34 @@ void JsonDescriptor::createJsonMap(const std::vector<State::Token> &tokens) {
                 stateNext = ParseState::NewState;
                 break;
             }
+            case ParseState::CloseObjectState: {
+                ++currToken;
+                isClosedObject = true;
+                stateNext = ParseState::CompleteState;
+                break;
+            }
             case ParseState::CompleteState: {
                 if (currState == 0) json_map.emplace(currKey, std::move(currValue));
                 if (currState == 1 || currState == 2) {
-                    updateVariant(recursive_state.top());
+                    if (isClosedObject) {
+                        auto old_token = recursive_state.top().value;
+
+                        if (recursive_state.size() > 1) {
+                            recursive_state.pop();
+                            auto& new_token = recursive_state.top();
+                            new_token.currValue = std::get<JsonObject>(old_token);
+                            currState = new_token.state;
+                        }
+                        else {
+
+                        }
+                    }
+                    else if (isClosedArray) {
+
+                    }
+                    else {
+                        updateVariant(recursive_state.top());
+                    }
                 }
                 stateNext = ParseState::NewState;
                 break;
