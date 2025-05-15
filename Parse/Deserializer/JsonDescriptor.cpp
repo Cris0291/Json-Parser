@@ -43,6 +43,16 @@ void JsonDescriptor::createJsonMap(const std::vector<State::Token> &tokens) {
                 else if (currToken[0].type == State::TokenState::Close_Parenthesis) {
                     stateNext = ParseState::CloseObjectState;
                 }
+                else if (currToken[0].type == State::TokenState::Open_Array) {
+                    stateNext = ParseState::OpenArrayState;
+                }
+                else if (currToken[0].type == State::TokenState::Close_Array) {
+                    stateNext = ParseState::CloseArrayState;
+                }
+                else {
+                    ++currToken;
+                    stateNext = ParseState::NewState;
+                }
                 break;
             }
             case ParseState::KeyState: {
@@ -107,29 +117,52 @@ void JsonDescriptor::createJsonMap(const std::vector<State::Token> &tokens) {
                 break;
             }
             case ParseState::CloseObjectState: {
+                if (currState == 0) {
+                    ++currToken;
+                    stateNext = ParseState::CompleteState;
+                    break;
+                }
                 ++currToken;
                 isClosedObject = true;
+                stateNext = ParseState::CompleteState;
+                break;
+            }
+            case ParseState::OpenArrayState: {
+                currState = 2;
+                ++currToken;
+                JsonArray arr {};
+                auto recursive_token {JsonRecursiveToken(currState, arr)};
+                recursive_state.push(recursive_token);
+                stateNext = ParseState::NewState;
+                break;
+
+            }
+            case ParseState::CloseArrayState: {
+                ++currState;
+                isClosedArray = true;
                 stateNext = ParseState::CompleteState;
                 break;
             }
             case ParseState::CompleteState: {
                 if (currState == 0) json_map.emplace(currKey, std::move(currValue));
                 if (currState == 1 || currState == 2) {
-                    if (isClosedObject) {
+                    if (isClosedObject || isClosedArray) {
                         auto old_token = recursive_state.top().value;
 
                         if (recursive_state.size() > 1) {
                             recursive_state.pop();
                             auto& new_token = recursive_state.top();
-                            new_token.currValue = std::get<JsonObject>(old_token);
+                            new_token.currValue = isClosedObject ? std::get<JsonObject>(old_token) : std::get<JsonArray>(old_token);
                             currState = new_token.state;
+                            updateVariant(new_token);
                         }
                         else {
-
+                            recursive_state.pop();
+                            if (!recursive_state.empty()) throw std::invalid_argument("Something unexpected happened");
+                            currState = 0;
+                            currValue = isClosedObject ? std::get<JsonObject>(old_token) : std::get<JsonArray>(old_token);
+                            json_map.emplace(currKey, std::move(currValue));
                         }
-                    }
-                    else if (isClosedArray) {
-
                     }
                     else {
                         updateVariant(recursive_state.top());
