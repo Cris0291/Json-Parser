@@ -7,8 +7,8 @@
     <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
     <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
-    <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="3" type="long" />
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexRemoved" />
+    <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="3" type="long" />
   </component>
   <component name="CMakePresetLoader">{
   &quot;useNewFormat&quot;: true
@@ -31,10 +31,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Keep working on the recursive functionality">
-      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
+    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Finished create json map functionality">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -208,7 +208,10 @@
       <workItem from="1747051260556" duration="7034000" />
       <workItem from="1747137547379" duration="5429000" />
       <workItem from="1747223863814" duration="6018000" />
-      <workItem from="1747310359124" duration="5187000" />
+      <workItem from="1747310359124" duration="5593000" />
+      <workItem from="1747370966836" duration="5000" />
+      <workItem from="1747396593982" duration="1199000" />
+      <workItem from="1747655920430" duration="6164000" />
     </task>
     <task id="LOCAL-00001" summary="Add Tokenizer module">
       <option name="closed" value="true" />
@@ -570,7 +573,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747261219663</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Finished create json map functionality">
+      <option name="closed" value="true" />
+      <created>1747316323501</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1747316323501</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -605,7 +616,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add changes to the tokenizer" />
     <MESSAGE value="Keep working on those tokens" />
     <MESSAGE value="Modify the token state and the look up table" />
     <MESSAGE value="Add support for numeric literal values" />
@@ -630,7 +640,8 @@
     <MESSAGE value="Add variant test function" />
     <MESSAGE value="Kepp working on the recursive functionality" />
     <MESSAGE value="Keep working on the recursive functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Keep working on the recursive functionality" />
+    <MESSAGE value="Finished create json map functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished create json map functionality" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
