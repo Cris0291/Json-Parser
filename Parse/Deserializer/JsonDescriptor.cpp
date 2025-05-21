@@ -192,5 +192,18 @@ T JsonDescriptor::parseJsonToken(const std::string &value) {
     }
 }
 
+template<typename T>
+T from_json(const JsonDescriptor &obj) {
+    T instance {};
+
+    auto binder = [&obj](const std::string& key, auto& field) {
+        using FieldType = std::decay_t<decltype(field)>;
+        field = obj.get<FieldType>(key);
+    };
+
+    deserialize(instance, binder);
+
+    return instance;
+}
 
 

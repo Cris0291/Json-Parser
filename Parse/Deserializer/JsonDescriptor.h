@@ -23,6 +23,7 @@ private:
     static T parseJsonToken(const std::string& value);
 };
 
-
+template<typename T>
+T from_json(const JsonDescriptor& obj);
 
 #endif //JSONOBJECT_H
