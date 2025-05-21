@@ -26,4 +26,14 @@ private:
 template<typename T>
 T from_json(const JsonDescriptor& obj);
 
+enum class FieldType {
+    Int,
+    String,
+    Boolean,
+    Double,
+    Array,
+};
+template<typename T>
+constexpr FieldType getType();
+
 #endif //JSONOBJECT_H

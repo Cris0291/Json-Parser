@@ -198,6 +198,9 @@ T from_json(const JsonDescriptor &obj) {
 
     auto binder = [&obj](const std::string& key, auto& field) {
         using FieldType = std::decay_t<decltype(field)>;
+        switch () {
+
+        }
         field = obj.get<FieldType>(key);
     };
 
@@ -206,4 +209,7 @@ T from_json(const JsonDescriptor &obj) {
     return instance;
 }
 
+template <typename T>
+constexpr FieldType getType() {
 
+}
