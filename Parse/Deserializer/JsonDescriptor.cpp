@@ -210,6 +210,10 @@ T from_json(const JsonDescriptor &obj) {
 }
 
 template <typename T>
-constexpr FieldType getType() {
-
+FieldType getType() {
+    if constexpr (std::is_same_v<T, int>) return FieldType::Int;
+    else if constexpr (std::is_same_v<T, std::string>) return FieldType::String;
+    else if constexpr (std::is_same_v<T, bool>) return  FieldType::Boolean;
+    else if constexpr (std::is_same_v<T, double>) return FieldType::Double;
+    else if constexpr ()
 }
