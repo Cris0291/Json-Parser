@@ -8,6 +8,7 @@
     <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
     <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="3" type="long" />
+    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexRemoved" />
   </component>
   <component name="CMakePresetLoader">{
   &quot;useNewFormat&quot;: true
@@ -30,9 +31,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Add the get type function">
+    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Add more changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -212,15 +214,8 @@
       <workItem from="1747655920430" duration="6365000" />
       <workItem from="1747742338049" duration="5205000" />
       <workItem from="1747828690618" duration="5097000" />
-      <workItem from="1747915006691" duration="3142000" />
-    </task>
-    <task id="LOCAL-00001" summary="Add Tokenizer module">
-      <option name="closed" value="true" />
-      <created>1741920540675</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1741920540675</updated>
+      <workItem from="1747915006691" duration="3189000" />
+      <workItem from="1748222669180" duration="7990000" />
     </task>
     <task id="LOCAL-00002" summary="Add Tokenizer implementation">
       <option name="closed" value="true" />
@@ -606,7 +601,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747869120778</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Add more changes">
+      <option name="closed" value="true" />
+      <created>1747923011946</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1747923011946</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -663,10 +666,10 @@
     <MESSAGE value="Kepp working on the recursive functionality" />
     <MESSAGE value="Keep working on the recursive functionality" />
     <MESSAGE value="Finished create json map functionality" />
-    <MESSAGE value="Add more changes" />
     <MESSAGE value="Start addisng the from json function" />
     <MESSAGE value="Add the get type function" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add the get type function" />
+    <MESSAGE value="Add more changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add more changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -36,4 +36,16 @@ enum class FieldType {
 template<typename T>
 constexpr FieldType getType();
 
+template<typename T, template<typename...> class Template>
+struct is_specialization_of : std::false_type {};
+
+template<template<typename...> class Template, typename... Args>
+struct is_specialization_of<Template<Args...>, Template> : std::true_type {};
+
+template<int N, typename T>
+struct is_specialization_of_pointer<T, T*[N]> : std::true_type {};
+
+template<int N, typename T>
+struct is_specialization_of_pointer<T[N]> : std::true_type {};
+
 #endif //JSONOBJECT_H

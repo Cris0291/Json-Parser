@@ -215,5 +215,5 @@ FieldType getType() {
     else if constexpr (std::is_same_v<T, std::string>) return FieldType::String;
     else if constexpr (std::is_same_v<T, bool>) return  FieldType::Boolean;
     else if constexpr (std::is_same_v<T, double>) return FieldType::Double;
-    else if constexpr ()
+    else if constexpr (is_specialization_of<T, std::vector>::value) return FieldType::Array;
 }
