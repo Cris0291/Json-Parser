@@ -197,7 +197,8 @@ T from_json(const JsonDescriptor &obj) {
     T instance {};
 
     auto binder = [&obj](const std::string& key, auto& field) {
-        using FieldType = std::decay_t<decltype(field)>;
+        using raw_type = decltype(field);
+        using FieldType = std::remove_cvref_t<raw_type>;
         switch () {
 
         }
@@ -215,5 +216,9 @@ FieldType getType() {
     else if constexpr (std::is_same_v<T, std::string>) return FieldType::String;
     else if constexpr (std::is_same_v<T, bool>) return  FieldType::Boolean;
     else if constexpr (std::is_same_v<T, double>) return FieldType::Double;
-    else if constexpr (is_specialization_of<T, std::vector>::value) return FieldType::Array;
+    else if constexpr (is_specialization_of<T, std::vector>::value) return FieldType::Vector;
+    else if constexpr (is_array_specialization<T>::value) return FieldType::Array;
+    else if constexpr (is_c_array<T>::value) return  FieldType::CArray;
+    else if constexpr (is_pointer<T>::value) return  FieldType::Pointer;
+    else if constexpr (is_double_pointer<T>::value) return  FieldType::DoublePointer;
 }

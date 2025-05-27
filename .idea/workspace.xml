@@ -7,8 +7,8 @@
     <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
     <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
-    <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="3" type="long" />
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexRemoved" />
+    <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="3" type="long" />
   </component>
   <component name="CMakePresetLoader">{
   &quot;useNewFormat&quot;: true
@@ -31,7 +31,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Add more changes">
+    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Add vector specialization">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" afterDir="false" />
@@ -215,15 +215,9 @@
       <workItem from="1747742338049" duration="5205000" />
       <workItem from="1747828690618" duration="5097000" />
       <workItem from="1747915006691" duration="3189000" />
-      <workItem from="1748222669180" duration="7990000" />
-    </task>
-    <task id="LOCAL-00002" summary="Add Tokenizer implementation">
-      <option name="closed" value="true" />
-      <created>1741920752986</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1741920752986</updated>
+      <workItem from="1748222669180" duration="8555000" />
+      <workItem from="1748260545020" duration="4462000" />
+      <workItem from="1748346858299" duration="5192000" />
     </task>
     <task id="LOCAL-00003" summary="Add more changes">
       <option name="closed" value="true" />
@@ -609,7 +603,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747923011946</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Add vector specialization">
+      <option name="closed" value="true" />
+      <created>1748232491477</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1748232491491</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -644,7 +646,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add support for numeric literal values" />
     <MESSAGE value="Add close parenthesis case" />
     <MESSAGE value="Almost finish the finite state machine implementation" />
     <MESSAGE value="Update the token states" />
@@ -669,7 +670,8 @@
     <MESSAGE value="Start addisng the from json function" />
     <MESSAGE value="Add the get type function" />
     <MESSAGE value="Add more changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add more changes" />
+    <MESSAGE value="Add vector specialization" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add vector specialization" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

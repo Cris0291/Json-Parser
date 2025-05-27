@@ -32,6 +32,10 @@ enum class FieldType {
     Boolean,
     Double,
     Array,
+    Vector,
+    CArray,
+    Pointer,
+    DoublePointer
 };
 template<typename T>
 constexpr FieldType getType();
@@ -42,10 +46,27 @@ struct is_specialization_of : std::false_type {};
 template<template<typename...> class Template, typename... Args>
 struct is_specialization_of<Template<Args...>, Template> : std::true_type {};
 
-template<int N, typename T>
-struct is_specialization_of_pointer<T, T*[N]> : std::true_type {};
+template<typename T>
+struct is_array_specialization : std::false_type {};
 
-template<int N, typename T>
-struct is_specialization_of_pointer<T[N]> : std::true_type {};
+template<typename T, std::size_t N>
+struct is_array_specialization<std::array<T,N>> : std::true_type {};
 
+template<typename T>
+struct is_c_array : std::false_type {};
+
+template<typename T, std::size_t N>
+struct is_c_array<T[N]> : std::true_type {};
+
+template<typename T>
+struct is_pointer: std::false_type {};
+
+template<typename T>
+struct is_pointer<T*> : std::true_type {};
+
+template<typename T>
+struct is_double_pointer: std::false_type {};
+
+template<typename T>
+struct is_double_pointer<T**> : std::true_type {};
 #endif //JSONOBJECT_H
