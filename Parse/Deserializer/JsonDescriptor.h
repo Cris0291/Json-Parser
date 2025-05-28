@@ -35,7 +35,8 @@ enum class FieldType {
     Vector,
     CArray,
     Pointer,
-    DoublePointer
+    DoublePointer,
+    Object
 };
 template<typename T>
 constexpr FieldType getType();

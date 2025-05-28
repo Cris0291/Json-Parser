@@ -198,11 +198,14 @@ T from_json(const JsonDescriptor &obj) {
 
     auto binder = [&obj](const std::string& key, auto& field) {
         using raw_type = decltype(field);
-        using FieldType = std::remove_cvref_t<raw_type>;
-        switch () {
+        using field_type = std::remove_cvref_t<raw_type>;
+        FieldType type_enum = getType<field_type>();
+        switch (type_enum) {
+            case FieldType::Int : {
 
+            }
         }
-        field = obj.get<FieldType>(key);
+        field = obj.get<field_type>(key);
     };
 
     deserialize(instance, binder);
@@ -221,4 +224,5 @@ FieldType getType() {
     else if constexpr (is_c_array<T>::value) return  FieldType::CArray;
     else if constexpr (is_pointer<T>::value) return  FieldType::Pointer;
     else if constexpr (is_double_pointer<T>::value) return  FieldType::DoublePointer;
+    else if constexpr  (std::is_class_v<T>) return FieldType::Object;
 }

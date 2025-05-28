@@ -31,7 +31,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Add vector specialization">
+    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Add type representation for vector, arrays, pointers and double pointers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" afterDir="false" />
@@ -217,15 +217,8 @@
       <workItem from="1747915006691" duration="3189000" />
       <workItem from="1748222669180" duration="8555000" />
       <workItem from="1748260545020" duration="4462000" />
-      <workItem from="1748346858299" duration="5192000" />
-    </task>
-    <task id="LOCAL-00003" summary="Add more changes">
-      <option name="closed" value="true" />
-      <created>1741922204839</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1741922204839</updated>
+      <workItem from="1748346858299" duration="5393000" />
+      <workItem from="1748433537595" duration="4595000" />
     </task>
     <task id="LOCAL-00004" summary="Add more changes to the tokenizer">
       <option name="closed" value="true" />
@@ -611,7 +604,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748232491491</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Add type representation for vector, arrays, pointers and double pointers">
+      <option name="closed" value="true" />
+      <created>1748353229442</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1748353229444</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -646,7 +647,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add close parenthesis case" />
     <MESSAGE value="Almost finish the finite state machine implementation" />
     <MESSAGE value="Update the token states" />
     <MESSAGE value="Keep working on the tokenizer" />
@@ -671,7 +671,8 @@
     <MESSAGE value="Add the get type function" />
     <MESSAGE value="Add more changes" />
     <MESSAGE value="Add vector specialization" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add vector specialization" />
+    <MESSAGE value="Add type representation for vector, arrays, pointers and double pointers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add type representation for vector, arrays, pointers and double pointers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
