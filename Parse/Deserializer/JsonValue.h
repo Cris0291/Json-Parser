@@ -9,6 +9,7 @@
 #include <utility>
 #include <variant>
 #include <vector>
+#include "JsonDescriptor.h"
 
 class JsonValue;
 
@@ -26,10 +27,13 @@ public:
     template<typename T>
     JsonValue(T val);
     template<typename T>
-    T& get() const;
+    T get_value_by_index(FieldType type) const;
 private:
     ValueType _value;
 };
+
+
+
 
 struct JsonRecursiveToken {
     int state;

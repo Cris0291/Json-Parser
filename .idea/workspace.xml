@@ -31,10 +31,12 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Add type representation for vector, arrays, pointers and double pointers">
+    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Almost done with the deserializer part">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -218,15 +220,8 @@
       <workItem from="1748222669180" duration="8555000" />
       <workItem from="1748260545020" duration="4462000" />
       <workItem from="1748346858299" duration="5393000" />
-      <workItem from="1748433537595" duration="4595000" />
-    </task>
-    <task id="LOCAL-00004" summary="Add more changes to the tokenizer">
-      <option name="closed" value="true" />
-      <created>1742010128546</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1742010128546</updated>
+      <workItem from="1748433537595" duration="4699000" />
+      <workItem from="1748519887659" duration="6237000" />
     </task>
     <task id="LOCAL-00005" summary="Add cmake project">
       <option name="closed" value="true" />
@@ -612,7 +607,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748353229444</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Almost done with the deserializer part">
+      <option name="closed" value="true" />
+      <created>1748439097728</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1748439097728</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -647,7 +650,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Almost finish the finite state machine implementation" />
     <MESSAGE value="Update the token states" />
     <MESSAGE value="Keep working on the tokenizer" />
     <MESSAGE value="Modify look up table and token state" />
@@ -672,7 +674,8 @@
     <MESSAGE value="Add more changes" />
     <MESSAGE value="Add vector specialization" />
     <MESSAGE value="Add type representation for vector, arrays, pointers and double pointers" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add type representation for vector, arrays, pointers and double pointers" />
+    <MESSAGE value="Almost done with the deserializer part" />
+    <option name="LAST_COMMIT_MESSAGE" value="Almost done with the deserializer part" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -11,21 +11,6 @@
 #include "JsonValue.h"
 #include "Tokenizer/TokenState.h"
 
-
-class JsonDescriptor {
-public:
-    template<typename T>
-    T get(const std::string& key) const;
-private:
-    std::unordered_map<std::string, JsonValue> json_map;
-    void createJsonMap(const std::vector<State::Token>& tokens);
-    template<typename  T>
-    static T parseJsonToken(const std::string& value);
-};
-
-template<typename T>
-T from_json(const JsonDescriptor& obj);
-
 enum class FieldType {
     Int,
     String,
@@ -38,6 +23,21 @@ enum class FieldType {
     DoublePointer,
     Object
 };
+
+class JsonDescriptor {
+public:
+    template<typename T>
+    T get(const std::string& key, FieldType type) const;
+private:
+    std::unordered_map<std::string, JsonValue> json_map;
+    void createJsonMap(const std::vector<State::Token>& tokens);
+    template<typename  T>
+    static T parseJsonToken(const std::string& value);
+};
+
+template<typename T>
+T from_json(const JsonDescriptor& obj);
+
 template<typename T>
 constexpr FieldType getType();
 

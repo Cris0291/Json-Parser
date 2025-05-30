@@ -11,3 +11,7 @@ void updateVariant(JsonRecursiveToken &token) {
         }
     }, token.value);
 }
+
+template<typename T>
+T JsonValue::get_value_by_index(FieldType type) const {
+}

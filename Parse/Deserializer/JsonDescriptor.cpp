@@ -176,6 +176,14 @@ void JsonDescriptor::createJsonMap(const std::vector<State::Token> &tokens) {
     }
 }
 
+
+template<typename T>
+T JsonDescriptor::get(const std::string &key, FieldType type) const {
+    auto iterator_value = json_map.find(key);
+    if (iterator_value == json_map.end()) throw std::invalid_argument("Requested key was not found. " + key + " "+ "is not part of the json string");
+    auto json_value = iterator_value->second;
+}
+
 template<typename T>
 T JsonDescriptor::parseJsonToken(const std::string &value) {
     if constexpr (std::is_same_v<T, int>) {
