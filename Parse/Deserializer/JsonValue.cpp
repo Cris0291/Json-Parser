@@ -1,5 +1,7 @@
 #include "JsonValue.h"
 
+#include <stdexcept>
+
 void updateVariant(JsonRecursiveToken &token) {
     std::visit([&](auto& val) {
         using T = std::decay_t<decltype(val)>;
@@ -12,6 +14,13 @@ void updateVariant(JsonRecursiveToken &token) {
     }, token.value);
 }
 
-template<typename T>
-T JsonValue::get_value_by_index(FieldType type) const {
+template<typename T, int index>
+T JsonValue::get_value_by_index() const {
+    try {
+        auto value = std::get<index>(this->_value);
+        return value;
+    }
+    catch (const std::bad_variant_access&) {
+        throw std::invalid_argument("Type mismatch. Current key type does not match with json's key value");
+    }
 }

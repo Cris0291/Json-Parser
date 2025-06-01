@@ -26,8 +26,8 @@ public:
     JsonValue& operator= (JsonValue&&) = default;
     template<typename T>
     JsonValue(T val);
-    template<typename T>
-    T get_value_by_index(FieldType type) const;
+    template<typename T, int index>
+    T get_value_by_index() const;
 private:
     ValueType _value;
 };

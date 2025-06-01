@@ -177,11 +177,10 @@ void JsonDescriptor::createJsonMap(const std::vector<State::Token> &tokens) {
 }
 
 
-template<typename T>
-T JsonDescriptor::get(const std::string &key, FieldType type) const {
-    auto iterator_value = json_map.find(key);
+JsonValue JsonDescriptor::get(const std::string &key) const {
+    const auto iterator_value = json_map.find(key);
     if (iterator_value == json_map.end()) throw std::invalid_argument("Requested key was not found. " + key + " "+ "is not part of the json string");
-    auto json_value = iterator_value->second;
+    return iterator_value->second;
 }
 
 template<typename T>
@@ -210,10 +209,30 @@ T from_json(const JsonDescriptor &obj) {
         FieldType type_enum = getType<field_type>();
         switch (type_enum) {
             case FieldType::Int : {
-
+                const auto j_container = obj.get(key);
+                auto value = j_container.get_value_by_index<int, 1>();
+                field = value;
+                break;
+            }
+            case FieldType::Double : {
+                const auto j_container = obj.get(key);
+                auto value = j_container.get_value_by_index<double, 2>();
+                field = value;
+                break;
+            }
+            case FieldType::Boolean : {
+                const auto j_container = obj.get(key);
+                auto value = j_container.get_value_by_index<bool, 3>();
+                field = value;
+                break;
+            }
+            case FieldType::String : {
+                const auto j_container = obj.get(key);
+                auto value = j_container.get_value_by_index<std::string, 4>();
+                field = value;
+                break;
             }
         }
-        field = obj.get<field_type>(key);
     };
 
     deserialize(instance, binder);

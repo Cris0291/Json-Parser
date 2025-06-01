@@ -31,7 +31,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Almost done with the deserializer part">
+    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="More changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" afterDir="false" />
@@ -221,15 +221,8 @@
       <workItem from="1748260545020" duration="4462000" />
       <workItem from="1748346858299" duration="5393000" />
       <workItem from="1748433537595" duration="4699000" />
-      <workItem from="1748519887659" duration="6237000" />
-    </task>
-    <task id="LOCAL-00005" summary="Add cmake project">
-      <option name="closed" value="true" />
-      <created>1742010171452</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1742010171452</updated>
+      <workItem from="1748519887659" duration="6327000" />
+      <workItem from="1748699186343" duration="7455000" />
     </task>
     <task id="LOCAL-00006" summary="Add header file instead of module due to problems">
       <option name="closed" value="true" />
@@ -615,7 +608,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748439097728</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="More changes">
+      <option name="closed" value="true" />
+      <created>1748579939661</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1748579939661</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -650,7 +651,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Update the token states" />
     <MESSAGE value="Keep working on the tokenizer" />
     <MESSAGE value="Modify look up table and token state" />
     <MESSAGE value="Add a stack data structure in order to manage the recursive state between an array and an object" />
@@ -675,7 +675,8 @@
     <MESSAGE value="Add vector specialization" />
     <MESSAGE value="Add type representation for vector, arrays, pointers and double pointers" />
     <MESSAGE value="Almost done with the deserializer part" />
-    <option name="LAST_COMMIT_MESSAGE" value="Almost done with the deserializer part" />
+    <MESSAGE value="More changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="More changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
