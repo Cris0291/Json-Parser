@@ -232,6 +232,10 @@ T from_json(const JsonDescriptor &obj) {
                 field = value;
                 break;
             }
+            case FieldType::Vector : {
+                const auto j_container = obj.get(key);
+                auto value = j_container.get_value_by_index<JsonArray, 6>();
+            }
         }
     };
 

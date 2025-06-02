@@ -31,12 +31,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="More changes">
+    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Add from json internal switch">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -222,15 +219,8 @@
       <workItem from="1748346858299" duration="5393000" />
       <workItem from="1748433537595" duration="4699000" />
       <workItem from="1748519887659" duration="6327000" />
-      <workItem from="1748699186343" duration="7455000" />
-    </task>
-    <task id="LOCAL-00006" summary="Add header file instead of module due to problems">
-      <option name="closed" value="true" />
-      <created>1742010245328</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1742010245328</updated>
+      <workItem from="1748699186343" duration="7675000" />
+      <workItem from="1748865528422" duration="4221000" />
     </task>
     <task id="LOCAL-00007" summary="I will change the parse function so that it works by changing the state">
       <option name="closed" value="true" />
@@ -616,7 +606,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748579939661</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Add from json internal switch">
+      <option name="closed" value="true" />
+      <created>1748741204027</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1748741204027</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -651,7 +649,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Keep working on the tokenizer" />
     <MESSAGE value="Modify look up table and token state" />
     <MESSAGE value="Add a stack data structure in order to manage the recursive state between an array and an object" />
     <MESSAGE value="Keep adding changes" />
@@ -676,7 +673,8 @@
     <MESSAGE value="Add type representation for vector, arrays, pointers and double pointers" />
     <MESSAGE value="Almost done with the deserializer part" />
     <MESSAGE value="More changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="More changes" />
+    <MESSAGE value="Add from json internal switch" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add from json internal switch" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
