@@ -31,9 +31,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Add from json internal switch">
+    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Stuck in the last recursive implementation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -220,15 +221,10 @@
       <workItem from="1748433537595" duration="4699000" />
       <workItem from="1748519887659" duration="6327000" />
       <workItem from="1748699186343" duration="7675000" />
-      <workItem from="1748865528422" duration="4221000" />
-    </task>
-    <task id="LOCAL-00007" summary="I will change the parse function so that it works by changing the state">
-      <option name="closed" value="true" />
-      <created>1742096534506</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1742096534506</updated>
+      <workItem from="1748865528422" duration="4593000" />
+      <workItem from="1748951917920" duration="2751000" />
+      <workItem from="1749038358251" duration="2259000" />
+      <workItem from="1749124690465" duration="3804000" />
     </task>
     <task id="LOCAL-00008" summary="Add the basic data structure for the parser">
       <option name="closed" value="true" />
@@ -614,7 +610,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748741204027</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="Stuck in the last recursive implementation">
+      <option name="closed" value="true" />
+      <created>1748870996944</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1748870996944</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -649,7 +653,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Modify look up table and token state" />
     <MESSAGE value="Add a stack data structure in order to manage the recursive state between an array and an object" />
     <MESSAGE value="Keep adding changes" />
     <MESSAGE value="Last changes to the tokenizer" />
@@ -674,7 +677,8 @@
     <MESSAGE value="Almost done with the deserializer part" />
     <MESSAGE value="More changes" />
     <MESSAGE value="Add from json internal switch" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add from json internal switch" />
+    <MESSAGE value="Stuck in the last recursive implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Stuck in the last recursive implementation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

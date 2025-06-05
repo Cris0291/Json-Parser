@@ -37,6 +37,8 @@ private:
 template<typename T>
 T from_json(const JsonDescriptor& obj);
 
+void Recursive_from_json(auto& field, FieldType type, JsonValue value, const std::string& key);
+
 template<typename T>
 constexpr FieldType getType();
 

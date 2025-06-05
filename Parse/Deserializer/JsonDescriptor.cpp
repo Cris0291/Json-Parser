@@ -244,6 +244,10 @@ T from_json(const JsonDescriptor &obj) {
     return instance;
 }
 
+void Recursive_from_json(auto &field, FieldType type, JsonValue value, const std::string &key) {
+
+}
+
 template <typename T>
 FieldType getType() {
     if constexpr (std::is_same_v<T, int>) return FieldType::Int;
