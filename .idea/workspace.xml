@@ -31,7 +31,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Stuck in the last recursive implementation">
+    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Start writing last recursive function">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" afterDir="false" />
@@ -224,15 +224,8 @@
       <workItem from="1748865528422" duration="4593000" />
       <workItem from="1748951917920" duration="2751000" />
       <workItem from="1749038358251" duration="2259000" />
-      <workItem from="1749124690465" duration="3804000" />
-    </task>
-    <task id="LOCAL-00008" summary="Add the basic data structure for the parser">
-      <option name="closed" value="true" />
-      <created>1742263515806</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1742263515806</updated>
+      <workItem from="1749124690465" duration="3869000" />
+      <workItem from="1749470252045" duration="5598000" />
     </task>
     <task id="LOCAL-00009" summary="Add the finite state machine states">
       <option name="closed" value="true" />
@@ -618,7 +611,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748870996944</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="Start writing last recursive function">
+      <option name="closed" value="true" />
+      <created>1749130603181</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1749130603198</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -653,7 +654,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add a stack data structure in order to manage the recursive state between an array and an object" />
     <MESSAGE value="Keep adding changes" />
     <MESSAGE value="Last changes to the tokenizer" />
     <MESSAGE value="Change the structure of the project so that i can have a parent project and many child projects in this case a library and an executable in order to test the json parser" />
@@ -678,7 +678,8 @@
     <MESSAGE value="More changes" />
     <MESSAGE value="Add from json internal switch" />
     <MESSAGE value="Stuck in the last recursive implementation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Stuck in the last recursive implementation" />
+    <MESSAGE value="Start writing last recursive function" />
+    <option name="LAST_COMMIT_MESSAGE" value="Start writing last recursive function" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
