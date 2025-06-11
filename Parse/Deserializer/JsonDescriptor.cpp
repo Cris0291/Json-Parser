@@ -204,9 +204,12 @@ T from_json(const JsonDescriptor &obj) {
     T instance {};
 
     auto binder = [&obj](const std::string& key, auto& field) {
-        FieldType type = describe_type(field);
-        recursive_from_json(field, type, obj, key);
+        using raw_type = decltype(field);
+        using field_type = std::remove_cvref_t<raw_type>;
 
+        const JsonValue& jv = obj.get(key);
+
+        field = from_json<field_type>(jv);
     };
 
     deserialize(instance, binder);
@@ -214,43 +217,19 @@ T from_json(const JsonDescriptor &obj) {
     return instance;
 }
 
-FieldType describe_type(auto &field) {
-    using raw_type = decltype(field);
-    using field_type = std::remove_cvref_t<raw_type>;
-    const FieldType type_enum = getType<field_type>();
-    return type_enum;
-}
-
-void recursive_from_json(auto &field, const FieldType type, const JsonDescriptor &obj, const std::string &key) {
-    switch (type) {
-        case FieldType::Int : {
-            const auto j_container = obj.get(key);
-            auto value = j_container.get_value_by_index<int, 1>();
-            field = value;
-            return;
-        }
-        case FieldType::Double : {
-            const auto j_container = obj.get(key);
-            auto value = j_container.get_value_by_index<double, 2>();
-            field = value;
-            return;
-        }
-        case FieldType::Boolean : {
-            const auto j_container = obj.get(key);
-            auto value = j_container.get_value_by_index<bool, 3>();
-            field = value;
-            return;
-        }
-        case FieldType::String : {
-            const auto j_container = obj.get(key);
-            auto value = j_container.get_value_by_index<std::string, 4>();
-            field = value;
-            return;
-        }
-        case FieldType::Vector : {
-            const auto j_container = obj.get(key);
-            auto value = j_container.get_value_by_index<JsonArray, 6>();
-        }
+template<typename T>
+T from_json(const JsonValue& jv) {
+    if constexpr (std::is_same_v<T, int>) {
+        return jv.get_value_by_index<int, 1>();
+    }
+    else if constexpr (std::is_same_v<T, double>) {
+        return jv.get_value_by_index<double, 2>();
+    }
+    else if constexpr (std::is_same_v<T, bool>) {
+        return jv.get_value_by_index<bool, 3>();
+    }
+    else if constexpr (std::is_same_v<T, std::string>) {
+        return jv.get_value_by_index<T,4>();
     }
 }
 

@@ -37,12 +37,8 @@ private:
 template<typename T>
 T from_json(const JsonDescriptor& obj);
 
-void recursive_from_json(auto& field, FieldType type,  const JsonDescriptor &obj, const std::string& key);
-
 template<typename T>
 constexpr FieldType getType();
-
-FieldType describe_type(auto& field);
 
 template<typename T, template<typename...> class Template>
 struct is_specialization_of : std::false_type {};
