@@ -209,7 +209,7 @@ T from_json(const JsonDescriptor &obj) {
 
         const JsonValue& jv = obj.get(key);
 
-        field = from_json<field_type>(jv);
+        field = from_json(field, jv);
     };
 
     deserialize(instance, binder);
@@ -218,42 +218,44 @@ T from_json(const JsonDescriptor &obj) {
 }
 
 template<typename T>
-requires (!Containerable<T>)
-T from_json(const JsonValue& jv) {
+requires (!Containerable<T> && !specialization_of_array<T>)
+void from_json(T& out, const JsonValue& jv) {
     if constexpr (std::is_same_v<T, int>) {
-        return jv.get_value_by_index<int, 1>();
+        out = jv.get_value_by_index<int, 1>();
     }
     else if constexpr (std::is_same_v<T, double>) {
-        return jv.get_value_by_index<double, 2>();
+        out = jv.get_value_by_index<double, 2>();
     }
     else if constexpr (std::is_same_v<T, bool>) {
-        return jv.get_value_by_index<bool, 3>();
+        out = jv.get_value_by_index<bool, 3>();
     }
     else if constexpr (std::is_same_v<T, std::string>) {
-        return jv.get_value_by_index<std::string ,4>();
+        out = jv.get_value_by_index<std::string ,4>();
     }
 }
 
 template<Containerable C>
-C from_Json(const JsonValue& jv) {
+void from_Json(C& out, const JsonValue& jv) {
     C result;
     using inner_elem = typename C::value_type;
     const auto& arr = jv.get_value_by_index<JsonArray, 7>();
 
+    out.clear();
     if constexpr (requires(C& c, std::size_t n) {c.reseve(n);}) {
         result.reseve(arr.size());
     }
 
     for (const auto& a : arr) {
-        result.insert(result.end(), from_json<inner_elem>(a));
+        inner_elem elem;
+        from_json(elem, a);
+        result.insert(result.end(), std::move(elem));
     }
-    return result;
 }
 
 template<typename A>
 requires specialization_of_array<A>
-A from_Json(const JsonValue& jv) {
-    using inner_elem = typename A::value_type;
+void from_Json(A& out, const JsonValue& jv) {
+    //using inner_elem = typename A::value_type;
     constexpr std::size_t N = std::tuple_size_v<A>;
 
     const auto& arr = jv.get_value_by_index<JsonArray, 7>();
@@ -266,11 +268,30 @@ A from_Json(const JsonValue& jv) {
             );
     }
 
-    A result;
     for (std::size_t i = 0; i < N; i++) {
-        result[i] = from_json<inner_elem>(arr[i]);
+        from_json(out[i], arr[i]);
     }
-    return result;
+}
+
+template<typename C>
+requires specialization_of_c_array<C>
+void from_json(C& out, const JsonValue& jv) {
+    //using inner_elem = std::remove_extent_t<C>;
+    constexpr std::size_t N = std::extent_v<C>;
+
+    const auto& arr = jv.get_value_by_index<JsonArray, 7>();
+    if (arr.size() != N) {
+        throw std::runtime_error(
+        "JSON array size mismatch for T[N] expected "
+     + std::to_string(N)
+    + ", but got"
+    + std::to_string(arr.size())
+            );
+    }
+
+    for (std::size_t i = 0; i < N; i++) {
+        from_json(out[i], arr[i]);
+    }
 }
 
 template <typename T>

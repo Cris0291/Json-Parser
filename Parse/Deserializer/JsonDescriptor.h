@@ -80,6 +80,9 @@ template<typename T, std::size_t N>
 struct is_c_array<T[N]> : std::true_type {};
 
 template<typename T>
+concept specialization_of_c_array = is_c_array<T>::value;
+
+template<typename T>
 struct is_pointer: std::false_type {};
 
 template<typename T>
