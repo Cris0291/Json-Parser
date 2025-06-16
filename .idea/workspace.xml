@@ -7,7 +7,6 @@
     <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
     <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
-    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexRemoved" />
     <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="3" type="long" />
   </component>
   <component name="CMakePresetLoader">{
@@ -31,7 +30,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Almost there just need to resolve JsonValue recursively inside a vector of json values">
+    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Add overloads for vector, list, forward_list and array">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" afterDir="false" />
@@ -227,15 +226,9 @@
       <workItem from="1749124690465" duration="3869000" />
       <workItem from="1749470252045" duration="5707000" />
       <workItem from="1749556598327" duration="3747000" />
-      <workItem from="1749643034824" duration="4694000" />
-    </task>
-    <task id="LOCAL-00010" summary="Keep working on the tokenizer">
-      <option name="closed" value="true" />
-      <created>1742263618945</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1742263618945</updated>
+      <workItem from="1749643034824" duration="4791000" />
+      <workItem from="1749729531747" duration="2426000" />
+      <workItem from="1749996386561" duration="13301000" />
     </task>
     <task id="LOCAL-00011" summary="Update cmake">
       <option name="closed" value="true" />
@@ -621,7 +614,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749477070420</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Fixing some bugs">
+      <option name="closed" value="true" />
+      <created>1749649791520</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1749649791520</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -656,8 +657,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Last changes to the tokenizer" />
-    <MESSAGE value="Change the structure of the project so that i can have a parent project and many child projects in this case a library and an executable in order to test the json parser" />
     <MESSAGE value="Keep fixing bugs" />
     <MESSAGE value="Fix some more bugs" />
     <MESSAGE value="Start adding the deserializer functionality" />
@@ -681,7 +680,9 @@
     <MESSAGE value="Stuck in the last recursive implementation" />
     <MESSAGE value="Start writing last recursive function" />
     <MESSAGE value="Almost there just need to resolve JsonValue recursively inside a vector of json values" />
-    <option name="LAST_COMMIT_MESSAGE" value="Almost there just need to resolve JsonValue recursively inside a vector of json values" />
+    <MESSAGE value="Fixing some bugs" />
+    <MESSAGE value="Add overloads for vector, list, forward_list and array" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add overloads for vector, list, forward_list and array" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

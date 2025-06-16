@@ -218,6 +218,7 @@ T from_json(const JsonDescriptor &obj) {
 }
 
 template<typename T>
+requires (!Containerable<T>)
 T from_json(const JsonValue& jv) {
     if constexpr (std::is_same_v<T, int>) {
         return jv.get_value_by_index<int, 1>();
@@ -229,8 +230,47 @@ T from_json(const JsonValue& jv) {
         return jv.get_value_by_index<bool, 3>();
     }
     else if constexpr (std::is_same_v<T, std::string>) {
-        return jv.get_value_by_index<T,4>();
+        return jv.get_value_by_index<std::string ,4>();
     }
+}
+
+template<Containerable C>
+C from_Json(const JsonValue& jv) {
+    C result;
+    using inner_elem = typename C::value_type;
+    const auto& arr = jv.get_value_by_index<JsonArray, 7>();
+
+    if constexpr (requires(C& c, std::size_t n) {c.reseve(n);}) {
+        result.reseve(arr.size());
+    }
+
+    for (const auto& a : arr) {
+        result.insert(result.end(), from_json<inner_elem>(a));
+    }
+    return result;
+}
+
+template<typename A>
+requires specialization_of_array<A>
+A from_Json(const JsonValue& jv) {
+    using inner_elem = typename A::value_type;
+    constexpr std::size_t N = std::tuple_size_v<A>;
+
+    const auto& arr = jv.get_value_by_index<JsonArray, 7>();
+    if (arr.size() != N) {
+        throw std::runtime_error(
+        "JSON array size mismatch for std::array<…> expected "
+        + std::to_string(N)
+        + ", but got"
+        + std::to_string(arr.size())
+            );
+    }
+
+    A result;
+    for (std::size_t i = 0; i < N; i++) {
+        result[i] = from_json<inner_elem>(arr[i]);
+    }
+    return result;
 }
 
 template <typename T>
