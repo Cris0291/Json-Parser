@@ -236,19 +236,19 @@ void from_json(T& out, const JsonValue& jv) {
 
 template<Containerable C>
 void from_Json(C& out, const JsonValue& jv) {
-    C result;
+    //C result;
     using inner_elem = typename C::value_type;
     const auto& arr = jv.get_value_by_index<JsonArray, 7>();
 
     out.clear();
     if constexpr (requires(C& c, std::size_t n) {c.reseve(n);}) {
-        result.reseve(arr.size());
+        out.reseve(arr.size());
     }
 
     for (const auto& a : arr) {
         inner_elem elem;
         from_json(elem, a);
-        result.insert(result.end(), std::move(elem));
+        out.insert(out.end(), std::move(elem));
     }
 }
 
@@ -292,6 +292,11 @@ void from_json(C& out, const JsonValue& jv) {
     for (std::size_t i = 0; i < N; i++) {
         from_json(out[i], arr[i]);
     }
+}
+
+template<PointerToLeaf P>
+void from_json(P& out, const JsonValue& jv) {
+
 }
 
 template <typename T>

@@ -89,6 +89,19 @@ template<typename T>
 struct is_pointer<T*> : std::true_type {};
 
 template<typename T>
+concept  specialization_of_pointer = is_pointer<T>::value;
+
+template<typename T>
+concept NotAContainerOrArray =
+    (!Containerable<T>)
+&& (!specialization_of_array<T>)
+&& (!specialization_of_c_array<T>);
+
+template<typename T>
+concept  PointerToLeaf =
+    specialization_of_pointer<T> && NotAContainerOrArray<std::remove_pointer_t<T>>;
+
+template<typename T>
 struct is_double_pointer: std::false_type {};
 
 template<typename T>
