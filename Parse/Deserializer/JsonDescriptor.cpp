@@ -296,7 +296,26 @@ void from_json(C& out, const JsonValue& jv) {
 
 template<PointerToLeaf P>
 void from_json(P& out, const JsonValue& jv) {
+    using U = std::remove_pointer_t<P>;
+    if (std::holds_alternative<std::nullptr_t>(jv.get_value())) {
+        out = nullptr;
+        return;
+    }
 
+    if (std::holds_alternative<JsonArray>(jv.get_value())) {
+        const auto& arr = jv.get_value_by_index<JsonArray, 7>();
+        const std::size_t N = arr.size();
+        U* heapArr = new U[N];
+        for (std::size_t i = 0; i < N; i++) {
+            from_json(heapArr[i], arr[i]);
+        }
+        out = heapArr;
+        return;
+    }
+
+    U* single = new U{};
+    from_json(*single, jv);
+    out = single;
 }
 
 template <typename T>

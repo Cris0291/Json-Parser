@@ -28,6 +28,7 @@ public:
     JsonValue(T val);
     template<typename T, int index>
     T get_value_by_index() const;
+    ValueType get_value() const;
 private:
     ValueType _value;
 };

@@ -24,3 +24,7 @@ T JsonValue::get_value_by_index() const {
         throw std::invalid_argument("Type mismatch. Current key type does not match with json's key value");
     }
 }
+
+JsonValue::ValueType JsonValue::get_value() const {
+    return _value;
+}

@@ -7,7 +7,6 @@
     <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
     <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
-    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexRemoved" />
     <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="3" type="long" />
   </component>
   <component name="CMakePresetLoader">{
@@ -31,10 +30,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Change the from_json signature so that it was easy to work with T[N]">
+    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Add the pointer overload">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -231,15 +231,9 @@
       <workItem from="1749729531747" duration="2426000" />
       <workItem from="1749996386561" duration="13350000" />
       <workItem from="1750075053791" duration="5585000" />
-      <workItem from="1750161550027" duration="4032000" />
-    </task>
-    <task id="LOCAL-00013" summary="Add Token node implementations">
-      <option name="closed" value="true" />
-      <created>1742351677863</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1742351677863</updated>
+      <workItem from="1750161550027" duration="4099000" />
+      <workItem from="1750247889310" duration="1229000" />
+      <workItem from="1750250374302" duration="3583000" />
     </task>
     <task id="LOCAL-00014" summary="Modify tokenizer and token node">
       <option name="closed" value="true" />
@@ -625,7 +619,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750081791858</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Add the pointer overload">
+      <option name="closed" value="true" />
+      <created>1750168279765</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1750168279765</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -660,7 +662,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fix some more bugs" />
     <MESSAGE value="Start adding the deserializer functionality" />
     <MESSAGE value="Keep working on the json descriptor" />
     <MESSAGE value="Add more changes to the parsing state" />
@@ -685,7 +686,8 @@
     <MESSAGE value="Fixing some bugs" />
     <MESSAGE value="Add overloads for vector, list, forward_list and array" />
     <MESSAGE value="Change the from_json signature so that it was easy to work with T[N]" />
-    <option name="LAST_COMMIT_MESSAGE" value="Change the from_json signature so that it was easy to work with T[N]" />
+    <MESSAGE value="Add the pointer overload" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add the pointer overload" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
