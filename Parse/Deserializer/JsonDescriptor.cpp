@@ -177,6 +177,9 @@ void JsonDescriptor::createJsonMap(const std::vector<State::Token> &tokens) {
 }
 
 
+JsonDescriptor::JsonDescriptor(std::unordered_map<std::string, JsonValue> map) : json_map(std::move(map)) {
+}
+
 JsonValue JsonDescriptor::get(const std::string &key) const {
     const auto iterator_value = json_map.find(key);
     if (iterator_value == json_map.end()) throw std::invalid_argument("Requested key was not found. " + key + " "+ "is not part of the json string");
@@ -204,12 +207,10 @@ T from_json(const JsonDescriptor &obj) {
     T instance {};
 
     auto binder = [&obj](const std::string& key, auto& field) {
-        using raw_type = decltype(field);
-        using field_type = std::remove_cvref_t<raw_type>;
-
+        //using raw_type = decltype(field);
+        //using field_type = std::remove_cvref_t<raw_type>;
         const JsonValue& jv = obj.get(key);
-
-        field = from_json(field, jv);
+        from_json(field, jv);
     };
 
     deserialize(instance, binder);
@@ -316,6 +317,20 @@ void from_json(P& out, const JsonValue& jv) {
     U* single = new U{};
     from_json(*single, jv);
     out = single;
+}
+
+template<typename C>
+requires std::is_class_v<C>
+void from_json(C& out, const JsonValue& jv) {
+    auto obj = jv.get_value_by_index<JsonObject, 6>();
+    const JsonDescriptor jd{std::move(obj)};
+
+    auto binder = [&](std::string const &key, auto& field) {
+        const JsonValue& j = jd.get(key);
+        from_json(field, j);
+    };
+
+    deserialize(out, binder);
 }
 
 template <typename T>

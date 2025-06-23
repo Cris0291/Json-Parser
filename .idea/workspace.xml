@@ -7,6 +7,7 @@
     <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
     <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
+    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexRemoved" />
     <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="3" type="long" />
   </component>
   <component name="CMakePresetLoader">{
@@ -30,11 +31,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Add the pointer overload">
+    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Jus remains the class/struct overload">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -233,15 +233,10 @@
       <workItem from="1750075053791" duration="5585000" />
       <workItem from="1750161550027" duration="4099000" />
       <workItem from="1750247889310" duration="1229000" />
-      <workItem from="1750250374302" duration="3583000" />
-    </task>
-    <task id="LOCAL-00014" summary="Modify tokenizer and token node">
-      <option name="closed" value="true" />
-      <created>1742351719727</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1742351719727</updated>
+      <workItem from="1750250374302" duration="3799000" />
+      <workItem from="1750334403887" duration="864000" />
+      <workItem from="1750336322085" duration="3663000" />
+      <workItem from="1750680315855" duration="5736000" />
     </task>
     <task id="LOCAL-00015" summary="Keep working on the tokenizer">
       <option name="closed" value="true" />
@@ -627,7 +622,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750168279765</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="Jus remains the class/struct overload">
+      <option name="closed" value="true" />
+      <created>1750254303929</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1750254303929</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -662,7 +665,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Start adding the deserializer functionality" />
     <MESSAGE value="Keep working on the json descriptor" />
     <MESSAGE value="Add more changes to the parsing state" />
     <MESSAGE value="Add more changes to the descriptor" />
@@ -687,7 +689,8 @@
     <MESSAGE value="Add overloads for vector, list, forward_list and array" />
     <MESSAGE value="Change the from_json signature so that it was easy to work with T[N]" />
     <MESSAGE value="Add the pointer overload" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add the pointer overload" />
+    <MESSAGE value="Jus remains the class/struct overload" />
+    <option name="LAST_COMMIT_MESSAGE" value="Jus remains the class/struct overload" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

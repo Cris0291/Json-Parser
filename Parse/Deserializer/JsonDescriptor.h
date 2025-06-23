@@ -28,6 +28,7 @@ enum class FieldType {
 
 class JsonDescriptor {
 public:
+    explicit JsonDescriptor(std::unordered_map<std::string, JsonValue> map);
     JsonValue get(const std::string& key) const;
 private:
     std::unordered_map<std::string, JsonValue> json_map;
