@@ -49,6 +49,9 @@ void JsonDescriptor::createJsonMap(const std::vector<State::Token> &tokens) {
                 else if (currToken[0].type == State::TokenState::Close_Array) {
                     stateNext = ParseState::CloseArrayState;
                 }
+                else if (currToken[0].type == State::TokenState::Null) {
+                    stateNext = ParseState::Null;
+                }
                 else {
                     ++currToken;
                     stateNext = ParseState::NewState;
@@ -140,6 +143,16 @@ void JsonDescriptor::createJsonMap(const std::vector<State::Token> &tokens) {
             case ParseState::CloseArrayState: {
                 ++currState;
                 isClosedArray = true;
+                stateNext = ParseState::CompleteState;
+                break;
+            }
+            case ParseState::Null: {
+                const bool result = parseJsonToken<bool>(currToken[0].value);
+                if (currState == 0) currValue = JsonValue(result);
+                if (currState == 1 || currState == 2) {
+                    recursive_state.top().currValue = JsonValue(result);
+                }
+                ++currToken;
                 stateNext = ParseState::CompleteState;
                 break;
             }

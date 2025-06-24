@@ -15,7 +15,8 @@ enum class ParseState {
     OpenObjectState,
     CloseObjectState,
     OpenArrayState,
-    CloseArrayState
+    CloseArrayState,
+    Null
 };
 
 #endif //DESCRIPTORSTATE_H

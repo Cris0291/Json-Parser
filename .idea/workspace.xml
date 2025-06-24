@@ -31,10 +31,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Jus remains the class/struct overload">
+    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Finished the class/struct overload">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parse/Deserializer/DescriptorState.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/DescriptorState.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -236,15 +236,8 @@
       <workItem from="1750250374302" duration="3799000" />
       <workItem from="1750334403887" duration="864000" />
       <workItem from="1750336322085" duration="3663000" />
-      <workItem from="1750680315855" duration="5736000" />
-    </task>
-    <task id="LOCAL-00015" summary="Keep working on the tokenizer">
-      <option name="closed" value="true" />
-      <created>1742436387802</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1742436387802</updated>
+      <workItem from="1750680315855" duration="5868000" />
+      <workItem from="1750766776285" duration="4681000" />
     </task>
     <task id="LOCAL-00016" summary="Add the rest of the lookups">
       <option name="closed" value="true" />
@@ -630,7 +623,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750254303929</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="Finished the class/struct overload">
+      <option name="closed" value="true" />
+      <created>1750686839983</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1750686839999</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -665,7 +666,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Keep working on the json descriptor" />
     <MESSAGE value="Add more changes to the parsing state" />
     <MESSAGE value="Add more changes to the descriptor" />
     <MESSAGE value="Keep working on the parsing functionality" />
@@ -690,7 +690,8 @@
     <MESSAGE value="Change the from_json signature so that it was easy to work with T[N]" />
     <MESSAGE value="Add the pointer overload" />
     <MESSAGE value="Jus remains the class/struct overload" />
-    <option name="LAST_COMMIT_MESSAGE" value="Jus remains the class/struct overload" />
+    <MESSAGE value="Finished the class/struct overload" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished the class/struct overload" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
