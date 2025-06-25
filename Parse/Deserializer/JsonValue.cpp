@@ -28,3 +28,11 @@ T JsonValue::get_value_by_index() const {
 JsonValue::ValueType JsonValue::get_value() const {
     return _value;
 }
+
+void JsonValue::set_null() {
+    _isNull = true;
+}
+
+bool JsonValue::get_null() const {
+    return _isNull;
+}

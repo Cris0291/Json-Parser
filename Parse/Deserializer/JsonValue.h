@@ -18,7 +18,7 @@ using JsonArray = std::vector<JsonValue>;
 
 class JsonValue {
 public:
-    using ValueType = std::variant<std::nullptr_t,int,double,bool,std::string, JsonObject, JsonArray>;
+    using ValueType = std::variant<std::monostate,int,double,bool,std::string, JsonObject, JsonArray>;
     JsonValue() = default;
     JsonValue(const JsonValue&) = default;
     JsonValue(JsonValue&&) = default;
@@ -29,8 +29,11 @@ public:
     template<typename T, int index>
     T get_value_by_index() const;
     ValueType get_value() const;
+    void set_null();
+    bool get_null() const;
 private:
     ValueType _value;
+    bool _isNull = false;
 };
 
 

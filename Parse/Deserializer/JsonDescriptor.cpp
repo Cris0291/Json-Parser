@@ -147,7 +147,7 @@ void JsonDescriptor::createJsonMap(const std::vector<State::Token> &tokens) {
                 break;
             }
             case ParseState::Null: {
-                const bool result = parseJsonToken<bool>(currToken[0].value);
+                const auto result = parseJsonToken<std::monostate>(currToken[0].value);
                 if (currState == 0) currValue = JsonValue(result);
                 if (currState == 1 || currState == 2) {
                     recursive_state.top().currValue = JsonValue(result);
@@ -210,6 +210,9 @@ T JsonDescriptor::parseJsonToken(const std::string &value) {
     else if constexpr (std::is_same_v<T, bool>) {
         return  value == "true";
     }
+    else if constexpr (std::is_same_v<T, std::monostate>) {
+        return {};
+    }
     else {
         throw std::invalid_argument("Unsupported type while parsing the json token");
     }
@@ -232,7 +235,7 @@ T from_json(const JsonDescriptor &obj) {
 }
 
 template<typename T>
-requires (!Containerable<T> && !specialization_of_array<T>)
+requires (!Containerable<T> && !specialization_of_array<T> && !specialization_of_c_array<T> && !PointerToLeaf<T> && !std::is_class_v<T>)
 void from_json(T& out, const JsonValue& jv) {
     if constexpr (std::is_same_v<T, int>) {
         out = jv.get_value_by_index<int, 1>();
@@ -311,7 +314,7 @@ void from_json(C& out, const JsonValue& jv) {
 template<PointerToLeaf P>
 void from_json(P& out, const JsonValue& jv) {
     using U = std::remove_pointer_t<P>;
-    if (std::holds_alternative<std::nullptr_t>(jv.get_value())) {
+    if (std::holds_alternative<std::monostate>(jv.get_value())) {
         out = nullptr;
         return;
     }

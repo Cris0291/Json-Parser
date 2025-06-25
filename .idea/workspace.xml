@@ -31,10 +31,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Finished the class/struct overload">
+    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Add support for null json values">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parse/Deserializer/DescriptorState.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/DescriptorState.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -237,15 +238,8 @@
       <workItem from="1750334403887" duration="864000" />
       <workItem from="1750336322085" duration="3663000" />
       <workItem from="1750680315855" duration="5868000" />
-      <workItem from="1750766776285" duration="4681000" />
-    </task>
-    <task id="LOCAL-00016" summary="Add the rest of the lookups">
-      <option name="closed" value="true" />
-      <created>1742436431185</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1742436431185</updated>
+      <workItem from="1750766776285" duration="4764000" />
+      <workItem from="1750853001483" duration="3964000" />
     </task>
     <task id="LOCAL-00017" summary="Add changes to the tokenizer">
       <option name="closed" value="true" />
@@ -631,7 +625,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750686839999</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="Add support for null json values">
+      <option name="closed" value="true" />
+      <created>1750772073059</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1750772073059</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -666,7 +668,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add more changes to the parsing state" />
     <MESSAGE value="Add more changes to the descriptor" />
     <MESSAGE value="Keep working on the parsing functionality" />
     <MESSAGE value="Add more changes to the parsing functionality" />
@@ -691,7 +692,8 @@
     <MESSAGE value="Add the pointer overload" />
     <MESSAGE value="Jus remains the class/struct overload" />
     <MESSAGE value="Finished the class/struct overload" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished the class/struct overload" />
+    <MESSAGE value="Add support for null json values" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add support for null json values" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
