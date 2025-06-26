@@ -237,6 +237,10 @@ T from_json(const JsonDescriptor &obj) {
 template<typename T>
 requires (!Containerable<T> && !specialization_of_array<T> && !specialization_of_c_array<T> && !PointerToLeaf<T> && !std::is_class_v<T>)
 void from_json(T& out, const JsonValue& jv) {
+    if (jv.get_null()) {
+        out = T{};
+        return;
+    }
     if constexpr (std::is_same_v<T, int>) {
         out = jv.get_value_by_index<int, 1>();
     }
@@ -252,10 +256,13 @@ void from_json(T& out, const JsonValue& jv) {
 }
 
 template<Containerable C>
-void from_Json(C& out, const JsonValue& jv) {
-    //C result;
+void from_json(C& out, const JsonValue& jv) {
+    if (jv.get_null()) {
+        out.clear();
+        return;
+    }
     using inner_elem = typename C::value_type;
-    const auto& arr = jv.get_value_by_index<JsonArray, 7>();
+    const auto& arr = jv.get_value_by_index<JsonArray, 6>();
 
     out.clear();
     if constexpr (requires(C& c, std::size_t n) {c.reseve(n);}) {
@@ -271,11 +278,16 @@ void from_Json(C& out, const JsonValue& jv) {
 
 template<typename A>
 requires specialization_of_array<A>
-void from_Json(A& out, const JsonValue& jv) {
+void from_json(A& out, const JsonValue& jv) {
     //using inner_elem = typename A::value_type;
     constexpr std::size_t N = std::tuple_size_v<A>;
 
-    const auto& arr = jv.get_value_by_index<JsonArray, 7>();
+    if (jv.get_null()) {
+
+        return;
+    }
+
+    const auto& arr = jv.get_value_by_index<JsonArray, 6>();
     if (arr.size() != N) {
         throw std::runtime_error(
         "JSON array size mismatch for std::array<…> expected "

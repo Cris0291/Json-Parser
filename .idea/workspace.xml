@@ -31,11 +31,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Add support for null json values">
+    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Add more changes instead of representing null in the variant as nullptr_t i change it to be std::monostate">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -239,15 +237,8 @@
       <workItem from="1750336322085" duration="3663000" />
       <workItem from="1750680315855" duration="5868000" />
       <workItem from="1750766776285" duration="4764000" />
-      <workItem from="1750853001483" duration="3964000" />
-    </task>
-    <task id="LOCAL-00017" summary="Add changes to the tokenizer">
-      <option name="closed" value="true" />
-      <created>1742524215912</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1742524215912</updated>
+      <workItem from="1750853001483" duration="4139000" />
+      <workItem from="1750939634399" duration="5026000" />
     </task>
     <task id="LOCAL-00018" summary="Keep working on those tokens">
       <option name="closed" value="true" />
@@ -633,7 +624,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750772073059</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Add more changes instead of representing null in the variant as nullptr_t i change it to be std::monostate">
+      <option name="closed" value="true" />
+      <created>1750858406088</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1750858406104</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -668,7 +667,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add more changes to the descriptor" />
     <MESSAGE value="Keep working on the parsing functionality" />
     <MESSAGE value="Add more changes to the parsing functionality" />
     <MESSAGE value="Add variant test function" />
@@ -693,7 +691,8 @@
     <MESSAGE value="Jus remains the class/struct overload" />
     <MESSAGE value="Finished the class/struct overload" />
     <MESSAGE value="Add support for null json values" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add support for null json values" />
+    <MESSAGE value="Add more changes instead of representing null in the variant as nullptr_t i change it to be std::monostate" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add more changes instead of representing null in the variant as nullptr_t i change it to be std::monostate" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
