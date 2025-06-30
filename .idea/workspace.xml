@@ -31,9 +31,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Add more changes instead of representing null in the variant as nullptr_t i change it to be std::monostate">
+    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="keep struggling with null implementation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -238,15 +239,8 @@
       <workItem from="1750680315855" duration="5868000" />
       <workItem from="1750766776285" duration="4764000" />
       <workItem from="1750853001483" duration="4139000" />
-      <workItem from="1750939634399" duration="5026000" />
-    </task>
-    <task id="LOCAL-00018" summary="Keep working on those tokens">
-      <option name="closed" value="true" />
-      <created>1742695590948</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1742695590951</updated>
+      <workItem from="1750939634399" duration="5085000" />
+      <workItem from="1751284858820" duration="3988000" />
     </task>
     <task id="LOCAL-00019" summary="Modify the token state and the look up table">
       <option name="closed" value="true" />
@@ -632,7 +626,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750858406104</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="keep struggling with null implementation">
+      <option name="closed" value="true" />
+      <created>1750945279989</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1750945279989</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -667,7 +669,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Keep working on the parsing functionality" />
     <MESSAGE value="Add more changes to the parsing functionality" />
     <MESSAGE value="Add variant test function" />
     <MESSAGE value="Kepp working on the recursive functionality" />
@@ -692,7 +693,8 @@
     <MESSAGE value="Finished the class/struct overload" />
     <MESSAGE value="Add support for null json values" />
     <MESSAGE value="Add more changes instead of representing null in the variant as nullptr_t i change it to be std::monostate" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add more changes instead of representing null in the variant as nullptr_t i change it to be std::monostate" />
+    <MESSAGE value="keep struggling with null implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="keep struggling with null implementation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

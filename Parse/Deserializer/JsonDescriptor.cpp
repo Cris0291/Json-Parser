@@ -238,8 +238,7 @@ template<typename T>
 requires (!Containerable<T> && !specialization_of_array<T> && !specialization_of_c_array<T> && !PointerToLeaf<T> && !std::is_class_v<T>)
 void from_json(T& out, const JsonValue& jv) {
     if (jv.get_null()) {
-        out = T{};
-        return;
+        throw std::runtime_error("Null values should not be wrapped in std::optional");
     }
     if constexpr (std::is_same_v<T, int>) {
         out = jv.get_value_by_index<int, 1>();
@@ -258,8 +257,7 @@ void from_json(T& out, const JsonValue& jv) {
 template<Containerable C>
 void from_json(C& out, const JsonValue& jv) {
     if (jv.get_null()) {
-        out.clear();
-        return;
+        throw std::runtime_error("Null values should not be wrapped in std::optional");
     }
     using inner_elem = typename C::value_type;
     const auto& arr = jv.get_value_by_index<JsonArray, 6>();
@@ -279,6 +277,9 @@ void from_json(C& out, const JsonValue& jv) {
 template<typename A>
 requires specialization_of_array<A>
 void from_json(A& out, const JsonValue& jv) {
+    if (jv.get_null()) {
+        throw std::runtime_error("Null values should not be wrapped in std::optional");
+    }
     //using inner_elem = typename A::value_type;
     constexpr std::size_t N = std::tuple_size_v<A>;
 
@@ -305,6 +306,9 @@ void from_json(A& out, const JsonValue& jv) {
 template<typename C>
 requires specialization_of_c_array<C>
 void from_json(C& out, const JsonValue& jv) {
+    if (jv.get_null()) {
+        return;
+    }
     //using inner_elem = std::remove_extent_t<C>;
     constexpr std::size_t N = std::extent_v<C>;
 
@@ -325,12 +329,12 @@ void from_json(C& out, const JsonValue& jv) {
 
 template<PointerToLeaf P>
 void from_json(P& out, const JsonValue& jv) {
-    using U = std::remove_pointer_t<P>;
-    if (std::holds_alternative<std::monostate>(jv.get_value())) {
+    if (jv.get_null()) {
         out = nullptr;
         return;
     }
 
+    using U = std::remove_pointer_t<P>;
     if (std::holds_alternative<JsonArray>(jv.get_value())) {
         const auto& arr = jv.get_value_by_index<JsonArray, 7>();
         const std::size_t N = arr.size();
@@ -350,6 +354,9 @@ void from_json(P& out, const JsonValue& jv) {
 template<typename C>
 requires std::is_class_v<C>
 void from_json(C& out, const JsonValue& jv) {
+    if (jv.get_null()) {
+        throw std::runtime_error("Null values should not be wrapped in std::optional");
+    }
     auto obj = jv.get_value_by_index<JsonObject, 6>();
     const JsonDescriptor jd{std::move(obj)};
 
@@ -359,6 +366,21 @@ void from_json(C& out, const JsonValue& jv) {
     };
 
     deserialize(out, binder);
+}
+
+template<Optional T>
+void from_json(T& out, const JsonValue& jv) {
+    using V = typename T::value_type;
+    if constexpr (is_c_array<V>::value) throw std::runtime_error("C-style arrays should not be wrapped in std::optional");
+    if constexpr (is_pointer<V>::value) throw std::runtime_error("Pointers should not be wrapped in std::optional");
+
+    if (jv.get_null()) {
+        out.reset();
+        return;
+    }
+    else {
+        throw std::runtime_error("Non null values should not be wrapped in std::optional");
+    }
 }
 
 template <typename T>

@@ -9,6 +9,7 @@
 #include <vector>
 #include <list>
 #include <forward_list>
+#include <optional>
 
 #include "JsonValue.h"
 #include "Tokenizer/TokenState.h"
@@ -107,4 +108,13 @@ struct is_double_pointer: std::false_type {};
 
 template<typename T>
 struct is_double_pointer<T**> : std::true_type {};
+
+template<typename T>
+struct is_optional : std::false_type {};
+
+template<typename T>
+struct  is_optional<std::optional<T>> : std::true_type {};
+
+template<typename T>
+concept Optional = is_optional<T>::value;
 #endif //JSONOBJECT_H
