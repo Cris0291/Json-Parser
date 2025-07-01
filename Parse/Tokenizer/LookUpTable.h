@@ -25,4 +25,5 @@ namespace lut {
     constexpr auto StringDigits = MakeTable("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
     constexpr auto TrueBooleanDigits = MakeTable("true");
     constexpr auto FalseBooleanDigits = MakeTable("false");
+    constexpr auto NullDigits = MakeTable("null");
 }

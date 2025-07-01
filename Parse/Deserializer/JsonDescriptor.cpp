@@ -376,7 +376,6 @@ void from_json(T& out, const JsonValue& jv) {
 
     if (jv.get_null()) {
         out.reset();
-        return;
     }
     else {
         throw std::runtime_error("Non null values should not be wrapped in std::optional");
