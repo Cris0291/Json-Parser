@@ -31,11 +31,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Add optional overload">
+    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="This tiny library is almost done I just need to test it, fix some bugs and that would be it">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parse/Tokenizer/LookUpTable.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Tokenizer/LookUpTable.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parse/Tokenizer/Tokenizer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Tokenizer/Tokenizer.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,12 +68,11 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Interface/main.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Parse/Deserializer/DescriptorState.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Parse/Deserializer/JsonValue.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Parse/Tokenizer/LookUpTable.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Parse/Tokenizer/TokenState.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Parse/Tokenizer/Tokenizer.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Parse/Tokenizer/Tokenizer.h" root0="FORCE_HIGHLIGHTING" />
@@ -244,15 +241,10 @@
       <workItem from="1750853001483" duration="4139000" />
       <workItem from="1750939634399" duration="5085000" />
       <workItem from="1751284858820" duration="4082000" />
-      <workItem from="1751371104148" duration="4269000" />
-    </task>
-    <task id="LOCAL-00020" summary="Keep working on the tokenizer">
-      <option name="closed" value="true" />
-      <created>1742790831180</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1742790831180</updated>
+      <workItem from="1751371104148" duration="4369000" />
+      <workItem from="1751458033334" duration="1675000" />
+      <workItem from="1752970071211" duration="4593000" />
+      <workItem from="1753041660707" duration="9025000" />
     </task>
     <task id="LOCAL-00021" summary="Add more changes">
       <option name="closed" value="true" />
@@ -638,7 +630,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751290052642</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="This tiny library is almost done I just need to test it, fix some bugs and that would be it">
+      <option name="closed" value="true" />
+      <created>1751376434852</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1751376434855</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -673,7 +673,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add variant test function" />
     <MESSAGE value="Kepp working on the recursive functionality" />
     <MESSAGE value="Keep working on the recursive functionality" />
     <MESSAGE value="Finished create json map functionality" />
@@ -698,7 +697,8 @@
     <MESSAGE value="Add more changes instead of representing null in the variant as nullptr_t i change it to be std::monostate" />
     <MESSAGE value="keep struggling with null implementation" />
     <MESSAGE value="Add optional overload" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add optional overload" />
+    <MESSAGE value="This tiny library is almost done I just need to test it, fix some bugs and that would be it" />
+    <option name="LAST_COMMIT_MESSAGE" value="This tiny library is almost done I just need to test it, fix some bugs and that would be it" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

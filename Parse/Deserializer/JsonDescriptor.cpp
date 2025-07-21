@@ -148,9 +148,11 @@ void JsonDescriptor::createJsonMap(const std::vector<State::Token> &tokens) {
             }
             case ParseState::Null: {
                 const auto result = parseJsonToken<std::monostate>(currToken[0].value);
-                if (currState == 0) currValue = JsonValue(result);
+                JsonValue value {result};
+                value.set_null();
+                if (currState == 0) currValue = std::move(value);
                 if (currState == 1 || currState == 2) {
-                    recursive_state.top().currValue = JsonValue(result);
+                    recursive_state.top().currValue = std::move(value);
                 }
                 ++currToken;
                 stateNext = ParseState::CompleteState;
@@ -238,7 +240,7 @@ template<typename T>
 requires (!Containerable<T> && !specialization_of_array<T> && !specialization_of_c_array<T> && !PointerToLeaf<T> && !std::is_class_v<T>)
 void from_json(T& out, const JsonValue& jv) {
     if (jv.get_null()) {
-        throw std::runtime_error("Null values should not be wrapped in std::optional");
+        throw std::runtime_error("Null values should be wrapped in std::optional");
     }
     if constexpr (std::is_same_v<T, int>) {
         out = jv.get_value_by_index<int, 1>();
@@ -257,7 +259,7 @@ void from_json(T& out, const JsonValue& jv) {
 template<Containerable C>
 void from_json(C& out, const JsonValue& jv) {
     if (jv.get_null()) {
-        throw std::runtime_error("Null values should not be wrapped in std::optional");
+        throw std::runtime_error("Null values should be wrapped in std::optional");
     }
     using inner_elem = typename C::value_type;
     const auto& arr = jv.get_value_by_index<JsonArray, 6>();
@@ -278,15 +280,10 @@ template<typename A>
 requires specialization_of_array<A>
 void from_json(A& out, const JsonValue& jv) {
     if (jv.get_null()) {
-        throw std::runtime_error("Null values should not be wrapped in std::optional");
+        throw std::runtime_error("Null values should be wrapped in std::optional");
     }
     //using inner_elem = typename A::value_type;
     constexpr std::size_t N = std::tuple_size_v<A>;
-
-    if (jv.get_null()) {
-
-        return;
-    }
 
     const auto& arr = jv.get_value_by_index<JsonArray, 6>();
     if (arr.size() != N) {
@@ -312,7 +309,7 @@ void from_json(C& out, const JsonValue& jv) {
     //using inner_elem = std::remove_extent_t<C>;
     constexpr std::size_t N = std::extent_v<C>;
 
-    const auto& arr = jv.get_value_by_index<JsonArray, 7>();
+    const auto& arr = jv.get_value_by_index<JsonArray, 6>();
     if (arr.size() != N) {
         throw std::runtime_error(
         "JSON array size mismatch for T[N] expected "
@@ -336,7 +333,7 @@ void from_json(P& out, const JsonValue& jv) {
 
     using U = std::remove_pointer_t<P>;
     if (std::holds_alternative<JsonArray>(jv.get_value())) {
-        const auto& arr = jv.get_value_by_index<JsonArray, 7>();
+        const auto& arr = jv.get_value_by_index<JsonArray, 6>();
         const std::size_t N = arr.size();
         U* heapArr = new U[N];
         for (std::size_t i = 0; i < N; i++) {
@@ -355,9 +352,9 @@ template<typename C>
 requires std::is_class_v<C>
 void from_json(C& out, const JsonValue& jv) {
     if (jv.get_null()) {
-        throw std::runtime_error("Null values should not be wrapped in std::optional");
+        throw std::runtime_error("Null values should be wrapped in std::optional");
     }
-    auto obj = jv.get_value_by_index<JsonObject, 6>();
+    auto obj = jv.get_value_by_index<JsonObject, 5>();
     const JsonDescriptor jd{std::move(obj)};
 
     auto binder = [&](std::string const &key, auto& field) {
