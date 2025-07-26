@@ -14,6 +14,10 @@ void updateVariant(JsonRecursiveToken &token) {
     }, token.value);
 }
 
+template<typename T>
+JsonValue::JsonValue(T val) : _value{val} {
+};
+
 template<typename T, int index>
 T JsonValue::get_value_by_index() const {
     try {

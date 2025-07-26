@@ -7,8 +7,8 @@
     <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
     <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
-    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexRemoved" />
     <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="3" type="long" />
+    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexRemoved" />
   </component>
   <component name="CMakePresetLoader">{
   &quot;useNewFormat&quot;: true
@@ -31,9 +31,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="This tiny library is almost done I just need to test it, fix some bugs and that would be it">
+    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Fixed some bugs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonValue.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -244,15 +245,8 @@
       <workItem from="1751371104148" duration="4369000" />
       <workItem from="1751458033334" duration="1675000" />
       <workItem from="1752970071211" duration="4593000" />
-      <workItem from="1753041660707" duration="9025000" />
-    </task>
-    <task id="LOCAL-00021" summary="Add more changes">
-      <option name="closed" value="true" />
-      <created>1742790862447</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1742790862447</updated>
+      <workItem from="1753041660707" duration="9124000" />
+      <workItem from="1753447098947" duration="11108000" />
     </task>
     <task id="LOCAL-00022" summary="Add support for numeric literal values">
       <option name="closed" value="true" />
@@ -638,7 +632,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751376434855</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="Fixed some bugs">
+      <option name="closed" value="true" />
+      <created>1753064241383</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1753064241383</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -673,7 +675,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Kepp working on the recursive functionality" />
     <MESSAGE value="Keep working on the recursive functionality" />
     <MESSAGE value="Finished create json map functionality" />
     <MESSAGE value="Start addisng the from json function" />
@@ -698,7 +699,8 @@
     <MESSAGE value="keep struggling with null implementation" />
     <MESSAGE value="Add optional overload" />
     <MESSAGE value="This tiny library is almost done I just need to test it, fix some bugs and that would be it" />
-    <option name="LAST_COMMIT_MESSAGE" value="This tiny library is almost done I just need to test it, fix some bugs and that would be it" />
+    <MESSAGE value="Fixed some bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed some bugs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

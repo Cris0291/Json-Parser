@@ -221,6 +221,12 @@ T JsonDescriptor::parseJsonToken(const std::string &value) {
 }
 
 template<typename T>
+requires requires(T &inst)
+{
+    {
+        deserialize(inst, [&](auto const &key, auto &field){})
+    } -> std::same_as<void>;
+}
 T from_json(const JsonDescriptor &obj) {
     T instance {};
 
@@ -350,6 +356,12 @@ void from_json(P& out, const JsonValue& jv) {
 
 template<typename C>
 requires std::is_class_v<C>
+&&  requires(C &inst)
+{
+    {
+        deserialize(inst, [&](auto const &key, auto &field){})
+    } -> std::same_as<void>;
+}
 void from_json(C& out, const JsonValue& jv) {
     if (jv.get_null()) {
         throw std::runtime_error("Null values should be wrapped in std::optional");
