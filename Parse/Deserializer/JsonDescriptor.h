@@ -11,7 +11,7 @@
 #include <forward_list>
 #include <optional>
 
-#include "JsonValue.h"
+#include "Deserializer/JsonValue.h"
 #include "Tokenizer/TokenState.h"
 
 enum class FieldType {

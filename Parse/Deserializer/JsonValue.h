@@ -9,7 +9,6 @@
 #include <utility>
 #include <variant>
 #include <vector>
-#include "JsonDescriptor.h"
 
 class JsonValue;
 

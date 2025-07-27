@@ -4,7 +4,6 @@
 #include <stdexcept>
 
 #include "DescriptorState.h"
-#include "JsonValue.h"
 
 
 void JsonDescriptor::createJsonMap(const std::vector<State::Token> &tokens) {
@@ -167,7 +166,8 @@ void JsonDescriptor::createJsonMap(const std::vector<State::Token> &tokens) {
                         if (recursive_state.size() > 1) {
                             recursive_state.pop();
                             auto& new_token = recursive_state.top();
-                            new_token.currValue = isClosedObject ? std::get<JsonObject>(old_token) : std::get<JsonArray>(old_token);
+                            new_token.currValue = isClosedObject ? JsonValue{ std::get<JsonObject>(old_token) }
+                            : JsonValue{ std::get<JsonArray>(old_token) };
                             currState = new_token.state;
                             updateVariant(new_token);
                         }
@@ -175,7 +175,8 @@ void JsonDescriptor::createJsonMap(const std::vector<State::Token> &tokens) {
                             recursive_state.pop();
                             if (!recursive_state.empty()) throw std::invalid_argument("Something unexpected happened");
                             currState = 0;
-                            currValue = isClosedObject ? std::get<JsonObject>(old_token) : std::get<JsonArray>(old_token);
+                            currValue = isClosedObject ? JsonValue{ std::get<JsonObject>(old_token) }
+                            : JsonValue{ std::get<JsonArray>(old_token) };
                             json_map.emplace(currKey, std::move(currValue));
                         }
                     }
@@ -224,7 +225,7 @@ template<typename T>
 requires requires(T &inst)
 {
     {
-        deserialize(inst, [&](auto const &key, auto &field){})
+        deserialize(inst, [](auto const &key, auto &field){})
     } -> std::same_as<void>;
 }
 T from_json(const JsonDescriptor &obj) {
@@ -359,7 +360,7 @@ requires std::is_class_v<C>
 &&  requires(C &inst)
 {
     {
-        deserialize(inst, [&](auto const &key, auto &field){})
+        deserialize(inst, [](auto const &key, auto &field){})
     } -> std::same_as<void>;
 }
 void from_json(C& out, const JsonValue& jv) {
@@ -392,7 +393,7 @@ void from_json(T& out, const JsonValue& jv) {
 }
 
 template <typename T>
-FieldType getType() {
+constexpr FieldType getType() {
     if constexpr (std::is_same_v<T, int>) return FieldType::Int;
     else if constexpr (std::is_same_v<T, std::string>) return FieldType::String;
     else if constexpr (std::is_same_v<T, bool>) return  FieldType::Boolean;

@@ -1,5 +1,6 @@
 #include "Tokenizer.h"
 
+#include <iostream>
 #include <stack>
 
 
@@ -224,7 +225,7 @@ std::vector<Token> Tokenizer::Parse() {
                          }
                     }
                 }
-                
+
                 if (lut::RealNumericDigits.at(currChar[0])) {
                     if (numericWhiteSpaceFound) {
                         throw std::invalid_argument("Bad numeric construction");
@@ -272,7 +273,7 @@ std::vector<Token> Tokenizer::Parse() {
                     }
                 }
 
-                if (currChar[0] == ',') {
+                if (currChar[0] == ',' || currChar[0] == '}' || currChar[0] == ']') {
                     if (tokenValue.size() != 4 && tokenValue != "true") throw std::invalid_argument("true boolean was not formed correctly");
 
                     token = {TokenState::TrueBoolean, JsonState::Value, tokenValue};
@@ -296,7 +297,7 @@ std::vector<Token> Tokenizer::Parse() {
                     }
                 }
 
-                if (currChar[0] == ',') {
+                if (currChar[0] == ',' || currChar[0] == '}' || currChar[0] == ']') {
                     if (tokenValue.size() != 4 && tokenValue != "false") throw std::invalid_argument("false boolean was not formed correctly");
 
                     token = {TokenState::FalseBoolean, JsonState::Value, tokenValue};
@@ -320,7 +321,7 @@ std::vector<Token> Tokenizer::Parse() {
                     }
                 }
 
-                if (currChar[0] == ',') {
+                if (currChar[0] == ',' || currChar[0] == '}' || currChar[0] == ']') {
                     if (tokenValue.size() != 4 && tokenValue != "null") throw std::invalid_argument("null was not formed correctly");
 
                     token = {TokenState::Null, JsonState::Value, tokenValue};
