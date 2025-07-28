@@ -52,16 +52,30 @@ build cmake_object_order_depends_target_Parse: phony || .
 build CMakeFiles/Parse.dir/Tokenizer/Tokenizer.cpp.obj: CXX_COMPILER__Parse_unscanned_Debug C$:/Users/cris0/OneDrive/Escritorio/Json/Parse/Tokenizer/Tokenizer.cpp || cmake_object_order_depends_target_Parse
   DEP_FILE = CMakeFiles\Parse.dir\Tokenizer\Tokenizer.cpp.obj.d
   FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/cris0/OneDrive/Escritorio/Json/Parse
+  INCLUDES = -IC:/Users/cris0/OneDrive/Escritorio/Json/Parse/Tokenizer -IC:/Users/cris0/OneDrive/Escritorio/Json/Parse/Deserializer
   OBJECT_DIR = CMakeFiles\Parse.dir
   OBJECT_FILE_DIR = CMakeFiles\Parse.dir\Tokenizer
 
 build CMakeFiles/Parse.dir/Tokenizer/TokenNode.cpp.obj: CXX_COMPILER__Parse_unscanned_Debug C$:/Users/cris0/OneDrive/Escritorio/Json/Parse/Tokenizer/TokenNode.cpp || cmake_object_order_depends_target_Parse
   DEP_FILE = CMakeFiles\Parse.dir\Tokenizer\TokenNode.cpp.obj.d
   FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/cris0/OneDrive/Escritorio/Json/Parse
+  INCLUDES = -IC:/Users/cris0/OneDrive/Escritorio/Json/Parse/Tokenizer -IC:/Users/cris0/OneDrive/Escritorio/Json/Parse/Deserializer
   OBJECT_DIR = CMakeFiles\Parse.dir
   OBJECT_FILE_DIR = CMakeFiles\Parse.dir\Tokenizer
+
+build CMakeFiles/Parse.dir/Deserializer/JsonDescriptor.cpp.obj: CXX_COMPILER__Parse_unscanned_Debug C$:/Users/cris0/OneDrive/Escritorio/Json/Parse/Deserializer/JsonDescriptor.cpp || cmake_object_order_depends_target_Parse
+  DEP_FILE = CMakeFiles\Parse.dir\Deserializer\JsonDescriptor.cpp.obj.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/cris0/OneDrive/Escritorio/Json/Parse/Tokenizer -IC:/Users/cris0/OneDrive/Escritorio/Json/Parse/Deserializer
+  OBJECT_DIR = CMakeFiles\Parse.dir
+  OBJECT_FILE_DIR = CMakeFiles\Parse.dir\Deserializer
+
+build CMakeFiles/Parse.dir/Deserializer/JsonValue.cpp.obj: CXX_COMPILER__Parse_unscanned_Debug C$:/Users/cris0/OneDrive/Escritorio/Json/Parse/Deserializer/JsonValue.cpp || cmake_object_order_depends_target_Parse
+  DEP_FILE = CMakeFiles\Parse.dir\Deserializer\JsonValue.cpp.obj.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/cris0/OneDrive/Escritorio/Json/Parse/Tokenizer -IC:/Users/cris0/OneDrive/Escritorio/Json/Parse/Deserializer
+  OBJECT_DIR = CMakeFiles\Parse.dir
+  OBJECT_FILE_DIR = CMakeFiles\Parse.dir\Deserializer
 
 
 # =============================================================================
@@ -71,7 +85,7 @@ build CMakeFiles/Parse.dir/Tokenizer/TokenNode.cpp.obj: CXX_COMPILER__Parse_unsc
 #############################################
 # Link the static library libParse.a
 
-build libParse.a: CXX_STATIC_LIBRARY_LINKER__Parse_Debug CMakeFiles/Parse.dir/Tokenizer/Tokenizer.cpp.obj CMakeFiles/Parse.dir/Tokenizer/TokenNode.cpp.obj
+build libParse.a: CXX_STATIC_LIBRARY_LINKER__Parse_Debug CMakeFiles/Parse.dir/Tokenizer/Tokenizer.cpp.obj CMakeFiles/Parse.dir/Tokenizer/TokenNode.cpp.obj CMakeFiles/Parse.dir/Deserializer/JsonDescriptor.cpp.obj CMakeFiles/Parse.dir/Deserializer/JsonValue.cpp.obj
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = CMakeFiles\Parse.dir
   POST_BUILD = cd .

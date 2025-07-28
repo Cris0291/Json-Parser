@@ -17,4 +17,8 @@ add_library(Parse STATIC
         Deserializer/DescriptorState.h
 )
 
-target_include_directories(Parse PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(Parse
+        PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}/Tokenizer
+        ${CMAKE_CURRENT_SOURCE_DIR}/Deserializer
+)

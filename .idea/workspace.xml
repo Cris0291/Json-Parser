@@ -21,8 +21,7 @@
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
-      <config projectName="Json_Project" targetName="Interface" />
-      <config projectName="Json_Project" targetName="Parse" />
+      <config projectName="Parse" targetName="Parse" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -31,15 +30,16 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="more bugs more fixing">
+    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Tokenizer part is ready">
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Interface/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Interface/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Interface/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parse/Tokenizer/LookUpTable.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Tokenizer/LookUpTable.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parse/Tokenizer/Tokenizer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Tokenizer/Tokenizer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parse/Tokenizer/Tokenizer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Tokenizer/Tokenizer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parse/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parse/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parse/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/cmake-build-debug/build.ninja" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -3559,6 +3559,9 @@
     <setting file="file://$PROJECT_DIR$/Parse/Tokenizer/Tokenizer.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Parse/Tokenizer/Tokenizer.h" root0="FORCE_HIGHLIGHTING" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
     <option name="majorVersion" value="2024" />
@@ -3575,48 +3578,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "C/C++ File.main.cpp.executor": "Run",
-    "CMake Application.Interface.executor": "Run",
-    "CMake Application.Json_Project.executor": "Run",
-    "RunOnceActivity.RadMigrateCodeStyle": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "RunOnceActivity.west.config.association.type.startup.service": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/cris0/OneDrive/Escritorio/Json",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "CPPToolchains",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;C/C++ File.main.cpp.executor&quot;: &quot;Run&quot;,
+    &quot;CMake Application.Interface.executor&quot;: &quot;Run&quot;,
+    &quot;CMake Application.Json_Project.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.west.config.association.type.startup.service&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/cris0/OneDrive/Escritorio/Json&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;CPPToolchains&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\cris0\OneDrive\Escritorio\Json Project\Parse" />
     </key>
   </component>
-  <component name="RunManager" selected="CMake Application.Interface">
-    <configuration name="Interface" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Json_Project" TARGET_NAME="Interface" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Json_Project" RUN_TARGET_NAME="Interface">
+  <component name="RunManager" selected="C/C++ File.main.cpp">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Parse" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Json_Project" TARGET_NAME="Parse" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="Parse" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Parse" TARGET_NAME="Parse" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -3629,7 +3627,6 @@
     </configuration>
     <list>
       <item itemvalue="C/C++ File.main.cpp" />
-      <item itemvalue="CMake Application.Interface" />
       <item itemvalue="CMake Application.Parse" />
     </list>
     <recent_temporary>
@@ -3734,15 +3731,8 @@
       <workItem from="1753041660707" duration="9124000" />
       <workItem from="1753447098947" duration="11560000" />
       <workItem from="1753539303101" duration="21638000" />
-      <workItem from="1753625369641" duration="23624000" />
-    </task>
-    <task id="LOCAL-00024" summary="Add close parenthesis case">
-      <option name="closed" value="true" />
-      <created>1743051614821</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1743051614821</updated>
+      <workItem from="1753625369641" duration="23722000" />
+      <workItem from="1753704677407" duration="3566000" />
     </task>
     <task id="LOCAL-00025" summary="Almost finish the finite state machine implementation">
       <option name="closed" value="true" />
@@ -4128,7 +4118,15 @@
       <option name="project" value="LOCAL" />
       <updated>1753584881067</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="Tokenizer part is ready">
+      <option name="closed" value="true" />
+      <created>1753674478548</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1753674478563</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -4163,7 +4161,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Start addisng the from json function" />
     <MESSAGE value="Add the get type function" />
     <MESSAGE value="Add more changes" />
     <MESSAGE value="Add vector specialization" />
@@ -4188,7 +4185,8 @@
     <MESSAGE value="Fixed some bugs" />
     <MESSAGE value="almost there it is almost the last fix" />
     <MESSAGE value="more bugs more fixing" />
-    <option name="LAST_COMMIT_MESSAGE" value="more bugs more fixing" />
+    <MESSAGE value="Tokenizer part is ready" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tokenizer part is ready" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
