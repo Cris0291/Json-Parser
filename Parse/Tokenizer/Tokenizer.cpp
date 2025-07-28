@@ -2,7 +2,8 @@
 
 #include <iostream>
 #include <stack>
-
+#include <fstream>
+#include <filesystem>
 
 #include "LookUpTable.h"
 #include "TokenNode.h"
@@ -14,6 +15,17 @@ Tokenizer::Tokenizer(std::string &&json) noexcept : json_value{std::move(json)} 
 
 }
 
+Tokenizer::Tokenizer(const std::filesystem::path &file_path) {
+    std::ifstream in{file_path, std::ios::binary};
+    if (!in) {
+        throw std::runtime_error("Cannot open JSON file: " + file_path.string());
+    }
+
+    json_value.assign(
+        std::istreambuf_iterator<char>(in),
+        std::istreambuf_iterator<char>()
+        );
+}
 
 
 std::vector<Token> Tokenizer::Parse() {
@@ -24,6 +36,8 @@ std::vector<Token> Tokenizer::Parse() {
     bool keyStartMarker {true};
     bool numericPointFound {false};
     bool numericWhiteSpaceFound {false};
+    bool isFirstNumeric {true};
+    bool isExponent {false};
 
     TokenState stateNow = TokenState::NewToken;
     TokenState stateNext = TokenState::NewToken;
@@ -167,7 +181,7 @@ std::vector<Token> Tokenizer::Parse() {
             }
             case TokenState::Close_Array: {
                 if (jsonStateNow == JsonState::Comma) throw std::invalid_argument("Trailing commas are not allowed");
-                if (jsonStateNow != JsonState::Value) throw std::invalid_argument("Json was ill-formed");
+                if (!(jsonStateNow == JsonState::Value || jsonStateNow == JsonState::ValueOpenArray)) throw std::invalid_argument("Json was ill-formed");
 
                 tokenValue += currChar[0];
                 ++currChar;
@@ -206,7 +220,7 @@ std::vector<Token> Tokenizer::Parse() {
             }
             case TokenState::Close_Parenthesis: {
                 if (jsonStateNow == JsonState::Comma) throw std::invalid_argument("Trailing commas are not allowed");
-                if (jsonStateNow != JsonState::Value) throw std::invalid_argument("Json was ill-formed");
+                if (!(jsonStateNow == JsonState::Value || jsonStateNow == JsonState::ValueOpenParenthesis)) throw std::invalid_argument("Json was ill-formed");
                 recursive_state.pop();
 
                 tokenValue += currChar[0];
@@ -224,6 +238,33 @@ std::vector<Token> Tokenizer::Parse() {
                              throw std::invalid_argument("Json was ill-formed. Either a key was missing or something was not constructed correctly");
                          }
                     }
+                }
+
+                if (isFirstNumeric) {
+                    if (currChar[0] == '-') {
+                        tokenValue += currChar[0];
+                        ++currChar;
+                        isFirstNumeric = false;
+                        break;
+                    }
+                    isFirstNumeric = false;
+                    break;
+                }
+                if (currChar[0] == 'e' || currChar[0] == 'E') {
+                    if (isExponent) {
+                        throw std::invalid_argument("Bad numeric construction. Double exponent was found");
+                    }
+
+                    tokenValue += currChar[0];
+                    ++currChar;
+                    if (!(currChar[0] == '-' || currChar[0] == '+')) {
+                        throw std::invalid_argument("Bad numeric construction. Exponent should be followed by + or -");
+                    }
+                    tokenValue += currChar[0];
+                    ++currChar;
+                    isExponent = true;
+                    stateNext = TokenState::NumericLiteral;
+                    break;
                 }
 
                 if (lut::RealNumericDigits.at(currChar[0])) {
@@ -248,6 +289,8 @@ std::vector<Token> Tokenizer::Parse() {
                         stateNext = TokenState::CompleteToken;
                         numericPointFound = false;
                         numericWhiteSpaceFound = false;
+                        isFirstNumeric = true;
+                        isExponent = false;
                         break;
                     }
 
@@ -271,6 +314,11 @@ std::vector<Token> Tokenizer::Parse() {
                             throw std::invalid_argument("Json was ill-formed. Either a key was missing or something was not constructed correctly");
                         }
                     }
+                }
+
+                if (tokenValue.size() == 4 && lut::WhitespaceDigits.at((currChar[0]))) {
+                    ++currChar;
+                    break;
                 }
 
                 if (currChar[0] == ',' || currChar[0] == '}' || currChar[0] == ']') {
@@ -297,6 +345,11 @@ std::vector<Token> Tokenizer::Parse() {
                     }
                 }
 
+                if (tokenValue.size() == 5 && lut::WhitespaceDigits.at((currChar[0]))) {
+                    ++currChar;
+                    break;
+                }
+
                 if (currChar[0] == ',' || currChar[0] == '}' || currChar[0] == ']') {
                     if (tokenValue.size() != 4 && tokenValue != "false") throw std::invalid_argument("false boolean was not formed correctly");
 
@@ -319,6 +372,11 @@ std::vector<Token> Tokenizer::Parse() {
                             throw std::invalid_argument("Json was ill-formed. Either a key was missing or something was not constructed correctly");
                         }
                     }
+                }
+
+                if (tokenValue.size() == 4 && lut::WhitespaceDigits.at((currChar[0]))) {
+                    ++currChar;
+                    break;
                 }
 
                 if (currChar[0] == ',' || currChar[0] == '}' || currChar[0] == ']') {
@@ -364,8 +422,8 @@ std::vector<Token> Tokenizer::Parse() {
         stateNow = stateNext;
     }
 
-    if (token.type != TokenState::Close_Parenthesis) throw std::invalid_argument("Json was ill-formed. Missing quotation a close }");
-    vectorOutputTokens.push_back(token);
+    /*if (token.type != TokenState::Close_Parenthesis) throw std::invalid_argument("Json was ill-formed. Missing quotation a close }");
+    vectorOutputTokens.push_back(token);*/
 
     if (stateNow == TokenState::StringLiteral || stateNow == TokenState::Key) {
         throw std::invalid_argument("Missing quotation mark");

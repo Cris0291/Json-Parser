@@ -5,11 +5,9 @@
 int main() {
     std::cout << "Please enter some text in json format" << std::endl;
 
-    std::string json;
-    std::getline(std::cin, json);
-    Tokenizer tokenizer {std::move(json)};
+    Tokenizer tokenizer {std::filesystem::path{"C:\\Users\\cris0\\OneDrive\\Escritorio\\test2.json"}};
     std::vector<State::Token> tokens = tokenizer.Parse();
-std::cout << "here fine 3" << std::endl;
+
     for (auto token: tokens) {
         std::cout << "Token value: " << token.value << std::endl;
     }
