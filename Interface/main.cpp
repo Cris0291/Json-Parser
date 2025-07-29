@@ -1,7 +1,7 @@
 #include <iostream>
 
-#include "Deserializer/JsonDescriptor.h"
-#include "Tokenizer/Tokenizer.h"
+#include "JsonDescriptor.h"
+#include "Tokenizer.h"
 
 
 int main() {
