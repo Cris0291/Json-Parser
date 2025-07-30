@@ -7,7 +7,6 @@
     <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
     <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
-    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexRemoved" />
     <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="3" type="long" />
   </component>
   <component name="CMakePresetLoader">{
@@ -21,8 +20,8 @@
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
-      <config projectName="Json_Project" targetName="Interface" />
       <config projectName="Json_Project" targetName="Parse" />
+      <config projectName="Json_Project" targetName="Interface" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -31,16 +30,15 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="Fixing bugs related to the deserializer part">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="96378322-b2f1-41a5-8ee0-fb673b7b26c3" name="Changes" comment="More bugs to fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interface/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Interface/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Interface/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Interface/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Interface/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Interface/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parse/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parse/Tokenizer/TokenState.h" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/Include/TokenState.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parse/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parse/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parse/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/Parse/cmake-build-debug/build.ninja" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
@@ -83,8 +81,8 @@
     <setting file="file://$PROJECT_DIR$/Parse/Deserializer/JsonDescriptor.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Parse/Deserializer/JsonValue.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Parse/Deserializer/JsonValue.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Parse/Include/TokenState.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Parse/Tokenizer/LookUpTable.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Parse/Tokenizer/TokenState.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Parse/Tokenizer/Tokenizer.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Parse/Tokenizer/Tokenizer.h" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -134,21 +132,22 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\cris0\OneDrive\Escritorio\Json\Parse\Include" />
       <recent name="C:\Users\cris0\OneDrive\Escritorio\Json Project\Parse" />
     </key>
   </component>
   <component name="RunManager" selected="CMake Application.Interface">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Interface" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Json_Project" TARGET_NAME="Interface" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Json_Project" RUN_TARGET_NAME="Interface">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="Parse" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Json_Project" TARGET_NAME="Parse" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -268,15 +267,8 @@
       <workItem from="1753539303101" duration="21638000" />
       <workItem from="1753625369641" duration="23722000" />
       <workItem from="1753704677407" duration="3713000" />
-      <workItem from="1753790287221" duration="4255000" />
-    </task>
-    <task id="LOCAL-00026" summary="Update the token states">
-      <option name="closed" value="true" />
-      <created>1743306577313</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1743306577313</updated>
+      <workItem from="1753790287221" duration="4604000" />
+      <workItem from="1753876652457" duration="3996000" />
     </task>
     <task id="LOCAL-00027" summary="Keep working on the tokenizer">
       <option name="closed" value="true" />
@@ -662,7 +654,15 @@
       <option name="project" value="LOCAL" />
       <updated>1753708681383</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="More bugs to fix">
+      <option name="closed" value="true" />
+      <created>1753799569994</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1753799570056</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -697,7 +697,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add more changes" />
     <MESSAGE value="Add vector specialization" />
     <MESSAGE value="Add type representation for vector, arrays, pointers and double pointers" />
     <MESSAGE value="Almost done with the deserializer part" />
@@ -722,7 +721,8 @@
     <MESSAGE value="more bugs more fixing" />
     <MESSAGE value="Tokenizer part is ready" />
     <MESSAGE value="Fixing bugs related to the deserializer part" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixing bugs related to the deserializer part" />
+    <MESSAGE value="More bugs to fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="More bugs to fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

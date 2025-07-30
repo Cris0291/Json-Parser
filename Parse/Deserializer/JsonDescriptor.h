@@ -29,11 +29,13 @@ enum class FieldType {
 
 class JsonDescriptor {
 public:
+    JsonDescriptor() = default;
     explicit JsonDescriptor(std::unordered_map<std::string, JsonValue> map);
     JsonValue get(const std::string& key) const;
+    void createJsonMap(const std::vector<State::Token>& tokens);
 private:
     std::unordered_map<std::string, JsonValue> json_map;
-    void createJsonMap(const std::vector<State::Token>& tokens);
+
     template<typename  T>
     static T parseJsonToken(const std::string& value);
 };
