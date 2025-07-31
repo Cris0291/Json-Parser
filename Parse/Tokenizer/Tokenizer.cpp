@@ -3,7 +3,6 @@
 #include <iostream>
 #include <stack>
 #include <fstream>
-#include <filesystem>
 
 #include "LookUpTable.h"
 #include "TokenNode.h"
@@ -429,6 +428,12 @@ std::vector<Token> Tokenizer::Parse() {
         throw std::invalid_argument("Missing quotation mark");
     }
 
+    tokens = vectorOutputTokens;
     return vectorOutputTokens;
+}
+
+void Tokenizer::CreateTokens() const {
+    JsonDescriptor descriptor {};
+    descriptor.createJsonMap(tokens);
 }
 

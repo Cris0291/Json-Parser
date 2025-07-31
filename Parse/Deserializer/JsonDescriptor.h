@@ -10,6 +10,7 @@
 #include <list>
 #include <forward_list>
 #include <optional>
+#include <filesystem>
 
 #include "JsonValue.h"
 #include "TokenState.h"
@@ -35,7 +36,6 @@ public:
     void createJsonMap(const std::vector<State::Token>& tokens);
 private:
     std::unordered_map<std::string, JsonValue> json_map;
-
     template<typename  T>
     static T parseJsonToken(const std::string& value);
 };
