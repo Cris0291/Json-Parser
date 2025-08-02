@@ -24,7 +24,8 @@ public:
     JsonValue& operator= (const JsonValue&) = default;
     JsonValue& operator= (JsonValue&&) = default;
     template<typename T>
-    JsonValue(T val);
+    explicit JsonValue(T val) : _value{val}
+    {};
     template<typename T, int index>
     T get_value_by_index() const;
     ValueType get_value() const;

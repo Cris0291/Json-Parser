@@ -421,8 +421,8 @@ std::vector<Token> Tokenizer::Parse() {
         stateNow = stateNext;
     }
 
-    /*if (token.type != TokenState::Close_Parenthesis) throw std::invalid_argument("Json was ill-formed. Missing quotation a close }");
-    vectorOutputTokens.push_back(token);*/
+    vectorOutputTokens.push_back(token);
+    if (token.type != TokenState::Close_Parenthesis) throw std::invalid_argument("Json was ill-formed. Missing quotation a close }");
 
     if (stateNow == TokenState::StringLiteral || stateNow == TokenState::Key) {
         throw std::invalid_argument("Missing quotation mark");
@@ -435,5 +435,6 @@ std::vector<Token> Tokenizer::Parse() {
 void Tokenizer::CreateTokens() const {
     JsonDescriptor descriptor {};
     descriptor.createJsonMap(tokens);
+    //descriptor.DisplayMap();
 }
 

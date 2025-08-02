@@ -3,6 +3,7 @@ project(Interface)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(Interface main.cpp)
+add_executable(Interface main.cpp
+        test.h)
 
 target_link_libraries(Interface PUBLIC Parse)
