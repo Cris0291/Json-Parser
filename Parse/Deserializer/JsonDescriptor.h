@@ -155,8 +155,15 @@ void from_json(T& out, const JsonValue& jv) {
     else if constexpr (std::is_same_v<T, bool>) {
         out = jv.get_value_by_index<bool, 3>();
     }
-    else if constexpr (std::is_same_v<T, std::string>) {
-        out = jv.get_value_by_index<std::string ,4>();
+}
+
+template<typename T>
+requires std::is_same_v<T, std::string>
+void from_json(T& out, const JsonValue& jv) {
+    if (jv.get_null()) {
+        out.clear();
+    } else {
+        out = jv.get_value_by_index<std::string,4>();
     }
 }
 

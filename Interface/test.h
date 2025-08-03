@@ -6,10 +6,13 @@
 #define TEST_H
 #include <vector>
 #include <optional>
+#include <string>
 #endif //TEST_H
 
 namespace myns {
-
+    //
+    struct empty_obj {
+    };
     //–– Deepest nesting: { "deeper": { "value": "Deep nesting" } }
     struct Deeper {
         std::string value;
@@ -22,28 +25,28 @@ namespace myns {
     //–– The inner “object” field
     struct InnerObject {
         std::string      nestedString;
-        std::vector<JsonValue> nestedArray;   // [false,5.5]
+        std::vector<double> nestedArray;   // [6.5,5.5]
         DeepObject       deepObject;
     };
 
     //–– Top‐level structure
     struct MyData {
-        std::string               string_;
+        std::string               sval;
         int                       numberInteger;
         double                    numberFloat;
         bool                      booleanTrue;
         bool                      booleanFalse;
-        std::optional<JsonValue>  nullValue;    // maps JSON null → std::nullopt
-        std::vector<JsonValue>    array;        // mixed‐type array
+        std::optional<int>  nullValue;    // maps JSON null → std::nullopt
+        std::vector<std::string>    array;        // mixed‐type array
         InnerObject               object;
-        std::vector<JsonValue>    emptyArray;
-        std::optional<JsonValue>  emptyObject;  // maps `{}` → JSON object, or nullopt if truly absent
+        std::vector<bool>    emptyArray;
+        std::optional<empty_obj>  emptyObject;  // maps `{}` → JSON object, or nullopt if truly absent
     };
 
     //–– Bind each JSON key to the corresponding member
     template<typename Binder>
     void deserialize(MyData &d, Binder binder) {
-        binder("string",        d.string_);
+        binder("sval",          d.sval);
         binder("numberInteger", d.numberInteger);
         binder("numberFloat",   d.numberFloat);
         binder("booleanTrue",   d.booleanTrue);

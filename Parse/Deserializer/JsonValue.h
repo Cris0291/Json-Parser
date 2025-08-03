@@ -9,6 +9,7 @@
 #include <utility>
 #include <variant>
 #include <vector>
+#include <stdexcept>
 
 class JsonValue;
 
@@ -27,7 +28,15 @@ public:
     explicit JsonValue(T val) : _value{val}
     {};
     template<typename T, int index>
-    T get_value_by_index() const;
+    T get_value_by_index() const{
+        try {
+            auto value = std::get<index>(this->_value);
+            return value;
+        }
+        catch (const std::bad_variant_access&) {
+            throw std::invalid_argument("Type mismatch. Current key type does not match with json's key value");
+        }
+    }
     ValueType get_value() const;
     void set_null();
     bool get_null() const;

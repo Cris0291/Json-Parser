@@ -1,6 +1,5 @@
 #include "JsonValue.h"
 
-#include <stdexcept>
 
 void updateVariant(JsonRecursiveToken &token) {
     std::visit([&](auto& val) {
@@ -12,17 +11,6 @@ void updateVariant(JsonRecursiveToken &token) {
             val.push_back(std::move(token.currValue));
         }
     }, token.value);
-}
-
-template<typename T, int index>
-T JsonValue::get_value_by_index() const {
-    try {
-        auto value = std::get<index>(this->_value);
-        return value;
-    }
-    catch (const std::bad_variant_access&) {
-        throw std::invalid_argument("Type mismatch. Current key type does not match with json's key value");
-    }
 }
 
 JsonValue::ValueType JsonValue::get_value() const {
