@@ -245,7 +245,7 @@ namespace example {
     std::vector<int>        emptyArray;
     std::vector<std::vector<std::vector<int>>>        nestedMixed;
     std::string                   unicodeTest;
-    //std::vector<double>           scientific;
+    std::vector<double>           scientific;
   };
   template<typename B>
   void deserialize(Misc &m, B bind) {
@@ -253,7 +253,7 @@ namespace example {
     bind("emptyArray",  m.emptyArray);
     bind("nestedMixed", m.nestedMixed);
     bind("unicodeTest", m.unicodeTest);
-    //bind("scientific",  m.scientific);
+    bind("scientific",  m.scientific);
   }
   // ── root ─────────────────────────────────────────────────────────────────────
   struct Root {

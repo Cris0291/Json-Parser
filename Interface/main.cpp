@@ -13,9 +13,9 @@ int main() {
     JsonDescriptor descriptor {};
     descriptor.createJsonMap(tokens);
 
-     auto data = from_json<example::Root>(descriptor);
+     //auto data = from_json<example::Root>(descriptor);
 
-    std::cout << data.logs[0].messages[0] << std::endl;
+    //std::cout << data.logs[0].messages[0] << std::endl;
 
 }
 
