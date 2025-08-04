@@ -292,7 +292,9 @@ void from_json(T& out, const JsonValue& jv) {
         out.reset();
     }
     else {
-        throw std::runtime_error("Non null values should not be wrapped in std::optional");
+        V instance {};
+        from_json(instance, jv);
+        out.emplace(std::move(instance));
     }
 }
 #endif //JSONOBJECT_H

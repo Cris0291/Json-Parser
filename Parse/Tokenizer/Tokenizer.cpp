@@ -422,7 +422,7 @@ std::vector<Token> Tokenizer::Parse() {
     }
 
     vectorOutputTokens.push_back(token);
-    if (token.type != TokenState::Close_Parenthesis) throw std::invalid_argument("Json was ill-formed. Missing quotation a close }");
+    if (curly_brace_balance != 0) throw std::invalid_argument("Json was ill-formed. Missing quotation a close }");
 
     if (stateNow == TokenState::StringLiteral || stateNow == TokenState::Key) {
         throw std::invalid_argument("Missing quotation mark");

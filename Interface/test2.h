@@ -6,6 +6,7 @@
 #define TEST2_H
 #include <optional>
 #include <vector>
+#include <array>
 #endif //TEST2_H
 
 namespace ljson {
@@ -36,10 +37,10 @@ namespace ljson {
         bool booleanTrue;
         bool booleanFalse;
         std::optional<int>  nullValue;
-        std::vector<empty_obj>    array;
+        std::array<empty_obj, 7>    array;
         InnerObject               object;
-        int*    emptyArray;
-        empty_obj  emptyObject;
+        int**    emptyArray;
+        std::optional<empty_obj>  emptyObject;
     };
 
     template<typename Binder>
