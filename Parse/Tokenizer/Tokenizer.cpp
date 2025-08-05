@@ -283,7 +283,7 @@ std::vector<Token> Tokenizer::Parse() {
                 }
                 else {
                     if (currChar[0] == ',' || currChar[0] == '}' || currChar[0] == ']') {
-                        token = {TokenState::NumericLiteral, numericPointFound ? JsonState::ValueDouble : JsonState::ValueInt, tokenValue};
+                        token = {TokenState::NumericLiteral, numericPointFound || isExponent ? JsonState::ValueDouble : JsonState::ValueInt, tokenValue};
                         jsonStateNow = JsonState::Value;
                         stateNext = TokenState::CompleteToken;
                         numericPointFound = false;
