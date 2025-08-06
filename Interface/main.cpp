@@ -15,6 +15,36 @@ void print_string_vec(std::vector<std::string> const &v, int indentLevel) {
   }
   std::cout << "]";
 }
+void print_vec1d(const std::vector<int> &v, int indentLevel) {
+  std::cout << "[";
+  for (size_t i = 0; i < v.size(); ++i) {
+    std::cout << v[i];
+    if (i + 1 < v.size()) std::cout << ", ";
+  }
+  std::cout << "]";
+}
+
+void print_vec2d(const std::vector<std::vector<int>> &v, int indentLevel) {
+  std::cout << "[\n";
+  for (auto const &inner : v) {
+    indent(indentLevel + 1);
+    print_vec1d(inner, indentLevel + 1);
+    std::cout << ",\n";
+  }
+  indent(indentLevel);
+  std::cout << "]";
+}
+
+void print_vec3d(const std::vector<std::vector<std::vector<int>>> &v, int indentLevel) {
+  std::cout << "[\n";
+  for (auto const &matrix : v) {
+    indent(indentLevel + 1);
+    print_vec2d(matrix, indentLevel + 1);
+    std::cout << ",\n";
+  }
+  indent(indentLevel);
+  std::cout << "]";
+}
 
 int main() {
     std::cout << "Please enter some text in json format" << std::endl;
@@ -154,7 +184,7 @@ int main() {
       std::cout << "\n";
     indent(1); std::cout << "emptyArray: [ ]\n";
     indent(1); std::cout << "nestedMixed:\n";
-    //print_jsonval_vec(root.misc.nestedMixed, 1);
+    print_vec3d(root.misc.nestedMixed, 1);
     std::cout << "\n";
     indent(1); std::cout << "unicodeTest: \""
                          << root.misc.unicodeTest << "\"\n";
