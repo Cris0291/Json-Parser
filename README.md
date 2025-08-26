@@ -2,8 +2,6 @@
 
 A compact C++23 library that turns JSON files into your own C++ structs/classes without runtime reflection. You describe how your type maps to JSON by providing a single `deserialize(T&, binder)` function in the same namespace as `T` (found via ADL). The library does the rest: tokenize JSON, build an object map, and populate your types.
 
-> **Current repo layout matches the screenshot you shared** — no unit tests yet; `Interface/` hosts a small example app using the library.
-
 ---
 
 ## ✨ Highlights
